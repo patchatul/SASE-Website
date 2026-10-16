@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
+/*main colors*/
 :root {
   --background: #e9e8e8;
-  --foreground: #d0d0ce;
+  --foreground: #101820;
   --primary-color: #141b4d;
   --secondary-color: #89abe3;
+  --green: #006747;
+  --font-bebas-neue: "Bebas Neue", sans-serif;
 }
 
 @theme inline {
@@ -16,6 +19,8 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-bebas);
