@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import PandaEE from "@/public/panda_stickers/pandaEE.png";
 
 const memberImages = [
   { src: "/members/workshop.jpeg", alt: "SASE USF Workshop" },
@@ -12,6 +13,68 @@ const memberImages = [
   { src: "/members/project_team1.jpeg", alt: "SASE USF Project team" },
   { src: "/members/project_team.jpeg", alt: "SASE USF Project team" },
 ];
+
+const goals = [
+  {
+    title: "Professional Development",
+    text: "Prepare Asian heritage scientists and engineers for success in the global business world",
+  },
+  {
+    title: "Diversity",
+    text: "Celebrate diversity on campus and in the workplace",
+  },
+  {
+    title: "Service",
+    text: "Give members ways to contribute to their local communities",
+  },
+];
+
+const offers = [
+  {
+    title: "Events",
+    text: "Workshops and professional development events throughout the year",
+  },
+  {
+    title: "Connections",
+    text: "Meet and learn from professionals working in the field",
+  },
+  {
+    title: "Leadership",
+    text: "Leadership positions to build interpersonal skills and industry-sought qualities",
+  },
+];
+
+const cardTones = [
+  {
+    box: "bg-(--color-secondary)",
+    num: "text-[#97edfc]",
+  },
+  { box: "bg-[#c9e7b0]", num:"text-[#84ca44]"  },
+  { box: "bg-[#9faffc]", num:"text-[#6a6efc]" },
+];
+
+function InfoCard({
+  index,
+  title,
+  text,
+}: {
+  index: number;
+  title: string;
+  text: string;
+}) {
+  const tone = cardTones[index % cardTones.length];
+  return (
+    <div
+      className={`flex flex-col gap-2 rounded-2xl border-2 border-(--color-primary) p-3 text-left shadow-[5px_5px_0_0_var(--color-primary)] m-3 md:m-1 ${tone.box} hover:scale-105`}
+    >
+      <span className={`text-xl ${tone.num}`}>
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <h4 className="text-2xl">{title}</h4>
+      <p className="text-base">{text}</p>
+    </div>
+  );
+}
 
 export default function LandingPage() {
   const [activeImage, setActiveImage] = useState(0);
@@ -25,17 +88,44 @@ export default function LandingPage() {
 
     return () => window.clearInterval(intervalId);
   }, []);
+
   return (
-    <div className="w-full bg-linear-to-t from-(--color-secondary) to-(--color-primary)">
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-2 lg:gap-12 lg:px-12 lg:py-20">
-        <div className="flex flex-col gap-4">
+    <div className="w-full">
+      <main className="relative isolate flex md:h-[80dvh] min-h-120 w-full flex-col justify-end overflow-hidden bg-(--color-primary) md:px-10 md:pt-12 lg:px-16 lg:pt-16">
+        <div className="absolute inset-0 overflow-hidden md:inset-x-10 md:top-12 md:bottom-0 md:rounded-t-3xl md:shadow-2xl lg:inset-x-16 lg:top-16">
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={memberImages[activeImage].src}
+              className="absolute inset-0"
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                opacity: { duration: 1.2 },
+                scale: { duration: 5, ease: "linear" },
+              }}
+            >
+              <Image
+                src={memberImages[activeImage].src}
+                alt={memberImages[activeImage].alt}
+                fill
+                priority={activeImage === 0}
+                loading={activeImage === 0 ? "eager" : "lazy"}
+                sizes="100vw"
+                className="object-cover opacity-35"
+              />
+            </motion.div>
+          </AnimatePresence>
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-(--color-secondary) via-white/10 to-transparent" />
+        </div>
+        <div className="relative z-10 mt-auto flex flex-col justify-center p-5 sm:p-8 lg:p-12">
           <h1 className="text-4xl text-white md:text-6xl">
             Society of Asian Scientists and Engineers
           </h1>
           <p className="text-3xl text-(--color-primary) md:text-4xl">
             University of South Florida
           </p>
-          <div className="mt-2 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link
               href="https://bullsconnect.usf.edu/SASE/club_signup"
               className="text-md rounded-full border-2 bg-(--color-secondary) px-6 py-3 transition hover:scale-110 hover:border-white"
@@ -50,62 +140,58 @@ export default function LandingPage() {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4">
-          <div className="relative aspect-4/3 w-full overflow-hidden rounded-3xl border-2 border-white/30 bg-black/20 shadow-2xl">
-            <AnimatePresence initial={false}>
-              <motion.div
-                key={memberImages[activeImage].src}
-                className="absolute inset-0"
-                initial={{ opacity: 0, scale: 1.06 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  opacity: { duration: 1 },
-                  scale: { duration: 5, ease: "linear" },
-                }}
-              >
-                <Image
-                  src={memberImages[activeImage].src}
-                  alt={memberImages[activeImage].alt}
-                  fill
-                  priority={activeImage === 0}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </motion.div>
-            </AnimatePresence>
+      </main>
+
+      <div>
+        <section className="w-full bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary) text-(--color-primary)">
+          <div className="mx-auto flex w-full flex-col items-center gap-12 px-4 py-10 text-center sm:px-6 sm:py-12 lg:py-16">
+            <div className="flex max-w-5xl flex-col text-left">
+              <h2 className="text-3xl md:text-4xl">Who we are</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
+                <p className="text-xl md:text-2xl text-left">
+                  SASE USF is a student chapter of the Society of Asian
+                  Scientists and Engineers at University of South Florida
+                  (Tampa, Florida).
+                  <h2 className="text-3xl md:text-4xl">Our mission</h2>
+                  to help Asian heritage scientists and engineers reach their
+                  full potential in the global work force, to promote diversity
+                  on campus and in the workplace, and to provide community
+                  service.
+                </p>
+
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={PandaEE}
+                    alt="SASE USF Panda Sticker"
+                    width={120}
+                  />
+                  <Link
+                    href="/about"
+                    className="text-md rounded-full border-2 bg-(--color-secondary) px-6 py-3 transition hover:scale-110 hover:border-white"
+                  >
+                    Learn more about us
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex w-full flex-col gap-5 max-w-5xl">
+              <h3 className="text-3xl md:text-4xl">Our goals</h3>
+              <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 place-content-center">
+                {goals.map((item, index) => (
+                  <InfoCard key={item.title} index={index} {...item} />
+                ))}
+              </div>
+              <h3 className="text-3xl md:text-4xl">What we offer</h3>
+              <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 place-content-center">
+                {offers.map((item, index) => (
+                  <InfoCard key={item.title} index={index} {...item} />
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex gap-2">
-            {memberImages.map((image, index) => (
-              <button
-                key={image.src}
-                type="button"
-                aria-label={`Show photo ${index + 1}`}
-                onClick={() => setActiveImage(index)}
-                className={`h-2.5 rounded-full transition-all ${
-                  index === activeImage
-                    ? "w-8 bg-white"
-                    : "w-2.5 bg-white/40 hover:bg-white/70"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+        </section>
       </div>
-      <section className="w-full bg-linear-to-r from-(--color-secondary) to-(--color-primary)">
-        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-5 py-10 text-center sm:px-8 sm:py-14">
-          <p className="text-lg text-white">
-            USF SASE offers a variety of programs and initiatives, ranging from
-            professional development through events, connections to
-            professionals in the field, and leadership positions to develop
-            interpersonal skills and build industry-sought qualities.
-          </p>
-          <Link href="/about" className="text-md rounded-full border-2 bg-(--color-secondary) px-6 py-3 transition hover:scale-110 hover:border-white"
-            >
-            Learn more about us
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }
