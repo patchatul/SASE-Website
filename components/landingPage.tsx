@@ -14,18 +14,18 @@ const memberImages = [
   { src: "/members/project_team.jpeg", alt: "SASE USF Project team" },
 ];
 
-const goals = [
+const mission = [
   {
     title: "Professional Development",
-    text: "Prepare Asian heritage scientists and engineers for success in the global business world",
+    text: "To prepare Asian heritage scientists and engineers for success in the global business world",
   },
   {
     title: "Diversity",
-    text: "Celebrate diversity on campus and in the workplace",
+    text: "To promote and celebrate diversity on campus and in the workplace",
   },
   {
     title: "Service",
-    text: "Give members ways to contribute to their local communities",
+    text: "To provide members ways to contribute to their local communities",
   },
 ];
 
@@ -49,8 +49,8 @@ const cardTones = [
     box: "bg-(--color-secondary)",
     num: "text-[#97edfc]",
   },
-  { box: "bg-[#c9e7b0]", num:"text-[#84ca44]"  },
-  { box: "bg-[#9faffc]", num:"text-[#6a6efc]" },
+  { box: "bg-[#c9e7b0]", num: "text-[#84ca44]" },
+  { box: "bg-[#9faffc]", num: "text-[#6a6efc]" },
 ];
 
 function InfoCard({
@@ -128,13 +128,13 @@ export default function LandingPage() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="https://bullsconnect.usf.edu/SASE/club_signup"
-              className="text-md rounded-full border-2 bg-(--color-secondary) px-6 py-3 transition hover:scale-110 hover:border-white"
+              className="text-md rounded-full border-2  bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
             >
               Join us
             </Link>
             <Link
               href="/events"
-              className="text-md rounded-full border-2 bg-(--color-secondary) px-6 py-3 transition hover:scale-110 hover:border-white"
+              className="text-md rounded-full border-2 bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
             >
               See events
             </Link>
@@ -144,30 +144,40 @@ export default function LandingPage() {
 
       <div>
         <section className="w-full bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary) text-(--color-primary)">
-          <div className="mx-auto flex w-full flex-col items-center gap-12 px-4 py-10 text-center sm:px-6 sm:py-12 lg:py-16">
-            <div className="flex max-w-5xl flex-col text-left">
-              <h2 className="text-3xl md:text-4xl">Who we are</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
-                <p className="text-xl md:text-2xl text-left">
-                  SASE USF is a student chapter of the Society of Asian
+          <div className="mx-auto flex w-full flex-col items-center gap-5 px-4 py-8 text-center">
+            {/*grid*/}
+            <div className="mx-auto w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-5">
+              <div className="flex max-w-3xl flex-col text-center col-span-2 ">
+                <h2 className="text-3xl md:text-4xl">Who we are</h2>
+                <p className="text-2xl md:text-3xl text-left">
+                  USF SASE is a student chapter of the Society of Asian
                   Scientists and Engineers at University of South Florida
                   (Tampa, Florida).
-                  <h2 className="text-3xl md:text-4xl">Our mission</h2>
-                  to help Asian heritage scientists and engineers reach their
-                  full potential in the global work force, to promote diversity
-                  on campus and in the workplace, and to provide community
-                  service.
                 </p>
+                <p  className="text-white text-lg md:text-2xl">772+ members | 2,123+ IG Followers | 1,258+ LinkedIn Followers | 191+ events</p>
+           
+              </div>
 
-                <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center gap-3 col-span-1">
+                <div
+                  className="group relative flex flex-col items-center"
+                  tabIndex={0}
+                >
                   <Image
                     src={PandaEE}
-                    alt="SASE USF Panda Sticker"
+                    alt="USF SASE Panda Sticker"
                     width={120}
                   />
+                  <div
+                    role="tooltip"
+                    className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-max max-w-56 -translate-x-1/2 translate-y-1 rounded-xl border-2 border-(--color-primary) bg-white px-3 py-2 text-center text-base text-(--color-primary) opacity-0 shadow-[3px_3px_0_0_var(--color-primary)] transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
+                  >
+                    Hi, this is <span className="text-(--color-secondary)">ZUZU</span>. <br/>
+                    USF SASE's Panda Mascot.
+                  </div>
                   <Link
                     href="/about"
-                    className="text-md rounded-full border-2 bg-(--color-secondary) px-6 py-3 transition hover:scale-110 hover:border-white"
+                    className="text-md rounded-full border-2 bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
                   >
                     Learn more about us
                   </Link>
@@ -175,15 +185,15 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col gap-5 max-w-5xl">
-              <h3 className="text-3xl md:text-4xl">Our goals</h3>
-              <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 place-content-center">
-                {goals.map((item, index) => (
+            <div className="flex w-full flex-col gap-5 max-w-6xl">
+              <h3 className="text-3xl md:text-4xl">Our Mission</h3>
+              <div className="grid w-full grid-cols-1 sm:grid-cols-3 md:gap-6 place-content-center">
+                {mission.map((item, index) => (
                   <InfoCard key={item.title} index={index} {...item} />
                 ))}
               </div>
               <h3 className="text-3xl md:text-4xl">What we offer</h3>
-              <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 place-content-center">
+              <div className="grid w-full grid-cols-1 sm:grid-cols-3 md:gap-6 place-content-center">
                 {offers.map((item, index) => (
                   <InfoCard key={item.title} index={index} {...item} />
                 ))}
@@ -191,6 +201,7 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+    
       </div>
     </div>
   );

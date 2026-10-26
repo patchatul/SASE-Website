@@ -7,6 +7,8 @@
   --primary-color: #141b4d;
   --secondary-color: #89abe3;
   --green: #006747;
+  --light-green: #c9e7b0;
+  --light-blue: #a9ddff;
   --font-bebas-neue: "Bebas Neue", sans-serif;
 }
 
@@ -15,6 +17,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary-color);
   --color-secondary: var(--secondary-color);
+  --btn-bg-color: var(--light-blue);
   --font-bebas: var(--font-bebas-neue);
 }
 

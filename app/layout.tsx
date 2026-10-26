@@ -11,14 +11,14 @@ const bebasNeue = Bebas_Neue({
 
 
 export const metadata: Metadata = {
-  title: "SASE USF - Society of Asian Scientists and Engineers at University of South Florida",
+  title: "USF SASE - Society of Asian Scientists and Engineers at University of South Florida",
   description: "SASE website for the Society of Asian Scientists and Engineers at University of South Florida. SASE is a student organization that promotes diversity and inclusion in STEM fields, providing professional development and networking opportunities for students.",
   authors: [{ name: "Code for Community Project Team" }],
-  keywords: ["SASE", "Society of Asian Scientists and Engineers", "Website", "University of South Florida", "USF", "Student Organization", "STEM", "Science", "Technology", "Engineering", "Mathematics", "Computer Science", "Engineering", "Mathematics", "Science", "Technology", "Innovation", "Diversity", "Inclusion", "Community", "Leadership", "Professional Development"],
+  keywords: ["SASE", "Society of Asian Scientists and Engineers", "Website", "University of South Florida", "USF", "USF SASE", "SASE USF", "Student Organization", "STEM", "Science", "Technology", "Engineering", "Mathematics", "Computer Science", "Engineering", "Mathematics", "Science", "Technology", "Innovation", "Diversity", "Inclusion", "Community", "Leadership", "Professional Development"],
   icons: {icon:"/sase_logos/mixedWhiteStack.png", shortcut:"/sase_logos/mixedWhiteStack.png", apple:"/sase_logos/mixedWhiteStack.png"},
   // change og later after deployment url, images
   openGraph: {
-    title: "SASE USF - Society of Asian Scientists and Engineers at University of South Florida",
+    title: "USF SASE - Society of Asian Scientists and Engineers at University of South Florida",
     description: "SASE website for the Society of Asian Scientists and Engineers at University of South Florida. SASE is a student organization that promotes diversity and inclusion in STEM fields, providing professional development and networking opportunities for students.",
     
   }
