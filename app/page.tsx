@@ -3,7 +3,6 @@ import SaseLogo from "@/public/sase_logos/navyHorizontal.png";
 import Members from "@/public/members.jpg";
 import MenuBar from "@/components/menubar";
 import Footer from "@/components/footer";
-import About from "@/app/about/page";
 import Contacts from "@/app/contacts/page";
 import Eboard from "@/app/eBoard/page";
 import Events from "@/app/events/page";
@@ -29,7 +28,6 @@ export default function Home() {
         </h2>
       </main>
       <body className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
-        <About />
         <Events />
         <Programs />
         <BigLittle />
