@@ -44,7 +44,7 @@ export default function Footer() {
             title="BullsConnect"
           >
             <Image
-              src="/bullsconnect.png"
+              src="/bullsconnect.webp"
               alt="BullsConnect"
               width={267}
               height={61}
