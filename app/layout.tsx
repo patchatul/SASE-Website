@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue } from "next/font/google";
-import "./globals.css";
 import Footer from "@/components/footer";
+import "./globals.css";
 
 //font from google fonts
 const bebasNeue = Bebas_Neue({
