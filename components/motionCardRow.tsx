@@ -1,7 +1,77 @@
 "use client";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { animate, motion, useInView, useMotionValue } from "motion/react";
+import { animate, motion, useInView, useMotionValue, useReducedMotion } from "motion/react";
  
+
+/* PopIn: any box pops up (fade + rise + grow) when scrolled into view.
+   <PopIn delay={0.1}>...</PopIn>*/
+export function PopIn({
+  children,
+  delay = 0,
+  className = "h-full",
+}: {
+  children: ReactNode;
+  /** seconds, use to stagger boxes in a row */
+  delay?: number;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={className}>{children}</div>;
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 40, scale: 0.92 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* CountUp: counts from 0 to a number when scrolled into view.
+   <CountUp value="2,123+" />  ->  0 ... 2,123+
+   Keeps any commas and the + / suffix from the text. */
+export function CountUp({
+  value,
+  duration = 2,
+}: {
+  value: string;
+  /** seconds */
+  duration?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10%" });
+  const match = value.match(/^([\d,]+)(.*)$/);
+  const target = match ? Number(match[1].replace(/,/g, "")) : 0;
+  const suffix = match ? match[2] : "";
+  const [shown, setShown] = useState(0);
+ 
+  useEffect(() => {
+    if (!inView || !match) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(target);
+      return;
+    }
+    const controls = animate(0, target, {
+      duration,
+      ease: "easeOut",
+      onUpdate: (v) => setShown(Math.round(v)),
+    });
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, target, duration]);
+ 
+  if (!match) return <span>{value}</span>;
+  return (
+    <span ref={ref} className="tabular-nums">
+      {shown.toLocaleString("en-US")}
+      {suffix}
+    </span>
+  );
+}
+
 type MotionCardRowProps<T> = {
   items: T[];
   getKey: (item: T, index: number) => string;
