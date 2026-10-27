@@ -2,7 +2,6 @@ import Image from "next/image";
 import SaseLogo from "@/public/sase_logos/navyHorizontal.png";
 import Members from "@/public/members.jpg";
 import MenuBar from "@/components/menubar";
-import Footer from "@/components/footer";
 import About from "@/app/about/page";
 import Contacts from "@/app/contacts/page";
 import Eboard from "@/app/eBoard/page";
@@ -37,9 +36,6 @@ export default function Home() {
         <Eboard />
         <Contacts />
       </body>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 }

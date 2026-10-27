@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { Bebas_Neue } from "next/font/google";
+import Footer from "@/components/footer";
 import "./globals.css";
-
-//font from google fonts
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue",
-  subsets: ["latin"],
-  weight: "400",
-});
 
 
 export const metadata: Metadata = {
@@ -20,11 +13,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${bebasNeue.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className="h-full antialiased">
+      <body className="min-h-full flex flex-col">
+        <div className="site-content">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }
