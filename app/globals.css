@@ -8,7 +8,9 @@
   --primary-color: #141b4d;
   --secondary-color: #89abe3;
   --green: #006747;
-  --font-bebas-neue: "Bebas Neue", sans-serif;
+  --light-green: #c9e7b0;
+  --light-blue: #a9ddff;
+  --font-bebas-neue: "BebasNeue", sans-serif;
 }
 
 @theme inline {
@@ -16,12 +18,16 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary-color);
   --color-secondary: var(--secondary-color);
+  --btn-bg-color: var(--light-blue);
   --font-bebas: var(--font-bebas-neue);
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-bebas);
