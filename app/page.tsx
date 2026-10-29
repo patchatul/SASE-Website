@@ -35,9 +35,6 @@ export default function Home() {
         <Eboard />
         <Contacts />
       </body>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 }
