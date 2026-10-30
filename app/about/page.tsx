@@ -14,23 +14,7 @@ const stats = [
   { value: "[YEAR]", label: "[FOUNDED]" },
 ];
 
-const eboard = [
-  { name: "Sriharsha Manthena", role: "President", linkedin: "https://www.linkedin.com/in/sriharsha-manthena/" },
-  { name: "Annalise Yee", role: "Vice President Internal", linkedin: "https://www.linkedin.com/in/annalise-yee-24555831a/" },
-  { name: "Adhyayan Tiwari", role: "Vice President External", linkedin: "https://www.linkedin.com/in/adhyayan-tiwari-at/" },
-  { name: "Katarina Jenarine", role: "Secretary", linkedin: "https://www.linkedin.com/in/katarina-jenarine-b23901395/" },
-  { name: "Lakesh Kumar Ram Rakhiani", role: "Treasurer", linkedin: "https://www.linkedin.com/in/lakesh-k/" },
-  { name: "Nishanth Baddigam", role: "Event Director - Cultural", linkedin: "https://www.linkedin.com/in/nishanthbaddigam06/" },
-  { name: "Kundana Anumakonda", role: "Marketing Chair", linkedin: "https://www.linkedin.com/in/kundana-anumakonda/" },
-  { name: "Patcharalak Tulyakul", role: "Marketing Chair", linkedin: "https://www.linkedin.com/in/patcharalak-tulyakul/" },
-  { name: "Minh Hoa Vu", role: "Projects Director OPS", linkedin: "https://www.linkedin.com/in/hoa-vu-88851b387/" },
-  { name: "Arie Bhagan", role: "Technical Projects Director", linkedin: "https://www.linkedin.com/in/arie-bhagan-83208a31a/" },
-  { name: "Ashita Agrawal", role: "Conference and PR Chair", linkedin: "https://www.linkedin.com/in/ashita-agrawal-9a002532b/" },
-  { name: "Felicity Liu", role: "Service Chair", linkedin: "https://www.linkedin.com/in/feliucity/" },
-  { name: "Radhika Rao", role: "Engagement Director", linkedin: "https://www.linkedin.com/in/radhika-rao-09349a333/" },
-  { name: "Rakshit Bhardwaj", role: "Fundraising Chair", linkedin: "https://www.linkedin.com/in/rakshit-bhardwaj-5a8238373/" },
-  { name: "[NAME]", role: "[ROLE]", linkedin: "#" },
-];
+
 
 // ---- SHARED STYLES: reused so every section matches ----
 const card = "rounded-2xl border-2 border-[#141b4d] shadow-[4px_4px_0_#141b4d]";
@@ -117,29 +101,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* EBOARD */}
-      <section className={pad}>
-        <h2 className="mb-8 text-3xl font-semibold">MEET THE EBOARD</h2>
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
-          {eboard.map((m, i) => (
-            <a
-              key={i}
-              href={m.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${card} block overflow-hidden bg-white transition hover:-translate-y-1 hover:bg-[#bfe0a1]`}
-            >
-              <div className="flex h-40 items-center justify-center bg-[#d0d0ce] text-lg text-[#3f4444]">
-                [PHOTO]
-              </div>
-              <div className="border-t-4 border-[#84ca44] p-4">
-                <h3 className="text-2xl font-semibold">{m.name}</h3>
-                <p className="text-lg text-[#3f4444]">{m.role}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+     
+    
     </div>
   );
 }
