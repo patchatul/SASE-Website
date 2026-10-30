@@ -53,12 +53,14 @@ export const offers: InfoItem[] = [
 export const projectTeams: CardItem[] = [
   {
     name: "AI for Brain Tumor Detection",
-    description: "One sentence long description of what the project is about.",
+    description: "One sentence long description of what the project is about.",  image: "/members/project_team.jpeg",
   },
-  { name: "Team Name 2", description: "What this project is about." },
-  { name: "Team Name 3", description: "What this project is about." },
-  { name: "Team Name 4", description: "What this project is about." },
-  { name: "Team Name 5", description: "What this project is about." },
+  { name: "Assistive Walking Device", description: "What this project is about.",  image: "/members/project_team.jpeg" },
+  {name: "Cancer screening device", description: "What this project is about.",  image: "/members/project_team.jpeg" },
+  { name: "Code for Community", description: "What this project is about.",  image: "/members/project_team1.jpeg" },
+  { name: "Delivery bot", description: "What this project is about.",  image: "/members/project_team.jpeg" },
+  { name: "Solar water purification", description: "What this project is about.",  image: "/members/project_team.jpeg" },
+  {name: "Smart Robot", description: "What this project is about.",  image: "/members/project_team.jpeg" },
 ];
  
 export const bigLittle: CardItem[] = [
@@ -66,16 +68,19 @@ export const bigLittle: CardItem[] = [
     name: "Resume Reviews",
     description:
       "Get feedback on your resume and LinkedIn from an experienced upperclassman.",
+      image: "/members/big_little.jpeg"
   },
   {
     name: "Mock Interviews",
     description:
       "Practice technical and behavioral interviews before the real thing.",
+      image: "/members/big_little1.jpeg"
   },
   {
     name: "Internships & Research",
     description:
       "Learn how to find and land internships and research positions in STEM.",
+      image: "/members/big_little.jpeg"
   },
 ];
  

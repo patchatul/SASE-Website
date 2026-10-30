@@ -131,6 +131,9 @@ type CardListProps<T> = {
   renderItem: (item: T, index: number) => ReactNode;
   /** "grid" = normal responsive grid, "carousel" = auto-scrolling MotionCardRow */
   mode?: "grid" | "carousel";
+  /** with MORE cards than this (default 5) it becomes the auto-scroll carousel on every
+      screen, laptop too, and shows 4 at a time. Use Infinity to turn this off. */
+  scrollAbove?: number;
   /** cards per row on laptop (default: number of items, max 6) */
   columns?: number;
   /** carousel only: below this width (px) it is the carousel. 768 phone, 1024 tablet, 99999 always */
@@ -149,19 +152,25 @@ export function CardList<T>({
   columns,
   carouselBelow = 1024,
   interval,
+  scrollAbove = 5,
   className = "",
 }: CardListProps<T>) {
-  const cols = Math.max(1, Math.min(columns ?? items.length, 6));
- 
+  
+  const tooMany = items.length > scrollAbove;
+  const cols = Math.max(
+    1,
+    Math.min(columns ?? (tooMany ? 4 : items.length), 6),
+  );
   return (
     <div className={`mx-auto w-full ${className}`}>
-      {mode === "carousel" ? (
+      {mode === "carousel" || tooMany ? (
         <MotionCardRow
           items={items}
           getKey={getKey}
           renderItem={renderItem}
           columns={cols}
           carouselBelow={carouselBelow}
+          scrollAbove={scrollAbove}
           interval={interval}
         />
       ) : (

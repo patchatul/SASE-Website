@@ -288,3 +288,30 @@ export default function MotionCardRow<T>({
     </div>
   );
 }
+
+
+/* panda that keeps floating up and down */
+export function Float({
+  children,
+  distance = 10,
+  duration = 2.5,
+  className = "",
+}: {
+  children: ReactNode;
+  /** px it moves up */
+  distance?: number;
+  /** seconds for one up-and-down loop */
+  duration?: number;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      animate={reduceMotion ? undefined : { y: [0, -distance, 0] }}
+      transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
