@@ -15,7 +15,10 @@ import {
   projectTeams,
   bigLittle,
   eboard,
+  photos,
+  details,
 } from "@/data/membersInfo";
+import PolaroidCard from "@/components/cards";
 
 /*main landing page */
 
@@ -94,7 +97,7 @@ export default function LandingPage() {
             {/*grid*/}
             <div className="mx-auto w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 items-center px-4 py-8 gap-4 md:gap-5">
               <div className="flex max-w-3xl flex-col text-center col-span-2 ">
-                <h2 className="text-2xl md:text-3xl">Who we are</h2>
+                <h2 className="text-2xl md:text-5xl pb-5">Who we are</h2>
                 <p className="text-3xl md:text-4xl text-left">
                   USF SASE is a student chapter of the Society of Asian
                   Scientists and Engineers at University of South Florida
@@ -106,14 +109,14 @@ export default function LandingPage() {
                 <div
                   className="group relative flex flex-col items-center"
                   tabIndex={0}
-                > <Float className="hidden lg:block">
-                 
-                
-                  <Image
-                    src={PandaEE}
-                    alt="USF SASE Panda Sticker"
-                    width={120}
-                  />
+                >
+                  {" "}
+                  <Float className="hidden lg:block">
+                    <Image
+                      src={PandaEE}
+                      alt="USF SASE Panda Sticker"
+                      width={120}
+                    />
                   </Float>
                   <div
                     role="tooltip"
@@ -156,7 +159,7 @@ export default function LandingPage() {
             </div>
             {/*3 boxes for mission and what we offer */}
             <div className="flex w-full flex-col gap-8 max-w-6xl px-4 py-8">
-              <h3 className="text-2xl md:text-3xl">Our Mission</h3>
+              <h4 className="text-2xl md:text-3xl">Our Mission</h4>
               <CardList
                 mode="grid"
                 items={mission}
@@ -165,7 +168,7 @@ export default function LandingPage() {
                   <InfoCard index={index} {...item} />
                 )}
               />
-              <h3 className="text-2xl md:text-3xl">What we offer</h3>
+              <h4 className="text-2xl md:text-3xl ">What we offer</h4>
               <CardList
                 mode="grid"
                 items={offers}
@@ -180,87 +183,96 @@ export default function LandingPage() {
         {/* programs */}
         <section className="w-full bg-(--color-primary) text-(--color-secondary) md:py-12 px-5 py-8">
           {/*projects*/}
-          <h3 className="text-2xl md:text-3xl text-center pt-10">
+          <h3 className="text-2xl md:text-5xl  text-center pt-10">
             Our Programs
           </h3>
-          <div className="mx-auto max-w-none flex w-full flex-col items-center gap-10 px-4 py-2 sm:px-6 sm:py-6 lg:px-10 lg:py-8 2xl:px-16">
-            <h4 className="text-3xl md:text-4xl underline">Project Teams</h4>
-            <div className="grid grid-cols-2 mx-auto max-w-4xl px-8">
-              <p className="text-xl text-white md:text-2xl text-left">
-                USF SASE provides the opportunity to work on real-world
-                projects, collaborate with peers, and develop technical and
-                professional skills.
-              </p>
-              <p className="text-right text-2xl">
-                <span className="text-white text-4xl">{projectTeams.length} </span>projects
-                <br /> <span className="text-white text-4xl"> 30 </span>{" "}
-                students
-              </p>
-            </div>
-            <div className="w-full">
-              {/*pull image cards from program page */}
-              <CardList
-                mode="carousel"
-                carouselBelow={1024}
-                items={projectTeams}
-                getKey={(team) => team.name}
-                renderItem={(team, index) => (
-                  <CardBox index={index} showNumber {...team} />
-                )}
-              />
-            </div>
-            <Link
-              href="/programs"
-              className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
-            >
-              View all Project Teams
-            </Link>
-          </div>
-          <div className="h-1 bg-white/60 m-5"></div>
-          {/*big-little */}
-          <div className="bg-mx-auto max-w-none flex w-full flex-col items-center gap-10 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 2xl:px-16">
-            <h4 className="text-3xl md:text-4xl underline">
-              Big-Little Program
-            </h4>
-
-            <div className="mx-auto max-w-none grid grid-cols-1 md:grid-cols-3 ">
-              <div className="flex flex-col items-center gap-4">
-                <p className="text-left text-white text-xl md:text-2xl">
-                  USF SASE offers mentorship program where the experienced STEM
-                  upperclassmen are paired with mentees for 1-1 support.
+          <div className="gap-5">
+            <div className="mx-auto max-w-none flex w-full flex-col items-center gap-10 px-4 py-2 sm:px-6 sm:py-6 lg:px-10 lg:py-8 2xl:px-16">
+              <h4 className="text-4xl underline hover:scale-115 hover:text-white">
+                <Link href="/programs">Project Teams</Link>
+              </h4>
+              <div className="grid grid-cols-2 mx-auto max-w-4xl px-8">
+                <p className="text-xl text-white md:text-2xl text-left">
+                  USF SASE provides the opportunity to work on real-world
+                  projects, collaborate with peers, and develop technical and
+                  professional skills.
                 </p>
-                <Float className="hidden lg:block">
-                  <Image
-                    src={PandaAir}
-                    alt="USF SASE air panda sticker"
-                    width={200}
-                  />
-                </Float>
+                <p className="text-right text-2xl">
+                  <span className="text-white text-4xl">
+                    {projectTeams.length}{" "}
+                  </span>
+                  projects
+                  <br /> <span className="text-white text-4xl"> 30 </span>{" "}
+                  students
+                </p>
               </div>
-              {/*pull image cards from program page */}
-              <CardList
-                className="col-span-2"
-                mode="carousel"
-                carouselBelow={1024}
-                items={bigLittle}
-                getKey={(item) => item.name}
-                renderItem={(item, index) => (
-                  <CardBox index={index} {...item} />
-                )}
-              />
+              <div className="w-full">
+                {/*pull image cards from program page */}
+                <CardList
+                  mode="carousel"
+                  carouselBelow={1024}
+                  items={projectTeams}
+                  getKey={(team) => team.name}
+                  renderItem={(team, index) => (
+                    <CardBox index={index} showNumber {...team} />
+                  )}
+                />
+              </div>
+              <Link
+                href="/programs"
+                className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+              >
+                View all Project Teams
+              </Link>
             </div>
-            <Link
-              href="/programs"
-              className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
-            >
-              View all Big-Little Members
-            </Link>
+            <div className="h-1 bg-white/60 m-10"></div>
+            {/*big-little */}
+            <div className="bg-mx-auto max-w-none flex w-full flex-col items-center gap-10 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 2xl:px-16">
+              <h4 className="text-3xl md:text-4xl underline hover:scale-115 hover:text-white">
+                {" "}
+                <Link href="/programs">Big-Little Program</Link>
+              </h4>
+              <div className="mx-auto max-w-none grid grid-cols-1 md:grid-cols-3 ">
+                <div className="flex flex-col items-center gap-4">
+                  <p className="text-left text-white text-xl md:text-2xl">
+                    USF SASE offers mentorship program where the experienced
+                    STEM upperclassmen are paired with mentees for 1-1 support.
+                  </p>
+                  <Float className="hidden lg:block">
+                    <Image
+                      src={PandaAir}
+                      alt="USF SASE air panda sticker"
+                      width={200}
+                    />
+                  </Float>
+                </div>
+                {/*pull image cards from program page */}
+                <CardList
+                  className="col-span-2"
+                  columns={3}
+                  carouselBelow={1024}
+                  items={bigLittle}
+                  getKey={(item) => item.name}
+                  renderItem={(item, index) => (
+                    <CardBox index={index} {...item} />
+                  )}
+                />
+              </div>
+              <Link
+                href="/programs"
+                className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+              >
+                View all Big-Little Members
+              </Link>
+            </div>
           </div>
         </section>
         {/* e-board */}
-        <section className="w-full bg-(--white) text-(--color-primary) md:py-12 px-5 py-8">
+        <section className="w-ful  bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary)  text-(--color-primary) md:py-12 px-5 py-8">
           <div className="mx-auto flex w-full max-w-none flex-col items-center gap-10 px-4 py-10 sm:px-6 lg:px-10 lg:py-14 2xl:px-16">
-            <h4 className="text-2xl md:text-3xl">Meet the E-boards</h4>
+            <h3 className="text-2xl md:text-5xl hover:scale-10">
+              <Link href="/eBoard">Meet the E-board</Link>
+            </h3>
             <div className="grid grid-cols-2 mx-auto max-w-4xl px-8">
               <p className="text-xl md:text-2xl text-left">
                 Our executive board leads USF SASE: planning events, running our
@@ -272,16 +284,16 @@ export default function LandingPage() {
               </p>
             </div>
             <CardList
-              mode="carousel"
+              columns={4}
+              minCardWidth={220}
               carouselBelow={1024}
               items={eboard}
-              getKey={(member, i) => `${member.subtitle}-${i}`}
+              getKey={(member) => member.name}
               renderItem={(member, index) => (
-                <CardBox
+                <PolaroidCard
                   index={index}
-                  outline="dark"
-                  placeholder="Photo"
-                  {...member}
+                  member={member}
+                  photo={photos[member.name]}
                 />
               )}
             />
@@ -293,18 +305,24 @@ export default function LandingPage() {
             </Link>
           </div>
         </section>
+
         {/* events */}
-        <section className="bg-(--color-secondary) w-full md:py-12 px-5">
+        <section className="bg-(--color-primary) w-full md:py-12 px-5">
           <div className="mx-auto flex w-full max-w-none flex-col items-center gap-10 px-4 py-10 sm:px-6 lg:px-10 lg:py-14 2xl:px-16">
-            <h4 className="text-2xl md:text-3xl">Events</h4>
-            <div className="md:text-3xl text-xl text-center text-white">
-              Professional Development | Techincal Workshop | Social | Volunteer
-              | Office Tour
+            <h3 className="text-2xl md:text-5xl  text-white hover:scale-105">
+              <Link href="/events">Events</Link>
+            </h3>
+            <div className=" grid md:grid-cols-2 grid-cols-1 gap-3 p-10">
+              <div className="md:text-3xl text-xl text-left text-white">
+                Professional Development | Techincal Workshop | Social |
+                Volunteer | Office Tour
+              </div>
+              <div></div>
             </div>
             <div className="flex gap-5 ">
               <Link
                 href="/events"
-                className="text-md rounded-full border-2  bg-(--light-green) px-6 py-3 transition hover:scale-110 hover:border-white"
+                className="text-md rounded-full border-2 bg-(--light-green) px-6 py-3 transition hover:scale-110 hover:border-white"
               >
                 view upcoming event
               </Link>
