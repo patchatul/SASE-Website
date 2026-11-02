@@ -108,7 +108,7 @@ export default function MotionCardRow<T>({
   items,
   getKey,
   renderItem,
-  interval = 5000,
+  interval = 2000,
   className = "",
   columns = 4,
   minCardWidth = 280,

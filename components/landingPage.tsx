@@ -97,7 +97,7 @@ export default function LandingPage() {
             {/*grid*/}
             <div className="mx-auto w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 items-center px-4 py-8 gap-4 md:gap-5">
               <div className="flex max-w-3xl flex-col text-center col-span-2 ">
-                <h2 className="text-2xl md:text-5xl pb-5">Who we are</h2>
+                <h2 className="text-3xl md:text-5xl pb-5">Who we are</h2>
                 <p className="text-3xl md:text-4xl text-left">
                   USF SASE is a student chapter of the Society of Asian
                   Scientists and Engineers at University of South Florida
@@ -159,7 +159,7 @@ export default function LandingPage() {
             </div>
             {/*3 boxes for mission and what we offer */}
             <div className="flex w-full flex-col gap-8 max-w-6xl px-4 py-8">
-              <h4 className="text-2xl md:text-3xl">Our Mission</h4>
+              <h4 className="text-3xl md:text-5xl">Our Mission</h4>
               <CardList
                 mode="grid"
                 items={mission}
@@ -168,7 +168,7 @@ export default function LandingPage() {
                   <InfoCard index={index} {...item} />
                 )}
               />
-              <h4 className="text-2xl md:text-3xl ">What we offer</h4>
+              <h4 className="text-3xl md:text-5xl ">What we offer</h4>
               <CardList
                 mode="grid"
                 items={offers}
@@ -183,7 +183,7 @@ export default function LandingPage() {
         {/* programs */}
         <section className="w-full bg-(--color-primary) text-(--color-secondary) md:py-12 px-5 py-8">
           {/*projects*/}
-          <h3 className="text-2xl md:text-5xl  text-center pt-10">
+          <h3 className="text-3xl md:text-5xl  text-center pt-10">
             Our Programs
           </h3>
           <div className="gap-5">
@@ -270,7 +270,7 @@ export default function LandingPage() {
         {/* e-board */}
         <section className="w-ful  bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary)  text-(--color-primary) md:py-12 px-5 py-8">
           <div className="mx-auto flex w-full max-w-none flex-col items-center gap-10 px-4 py-10 sm:px-6 lg:px-10 lg:py-14 2xl:px-16">
-            <h3 className="text-2xl md:text-5xl hover:scale-10">
+            <h3 className="text-3xl md:text-5xl hover:scale-10">
               <Link href="/eBoard">Meet the E-board</Link>
             </h3>
             <div className="grid grid-cols-2 mx-auto max-w-4xl px-8">
@@ -309,7 +309,7 @@ export default function LandingPage() {
         {/* events */}
         <section className="bg-(--color-primary) w-full md:py-12 px-5">
           <div className="mx-auto flex w-full max-w-none flex-col items-center gap-10 px-4 py-10 sm:px-6 lg:px-10 lg:py-14 2xl:px-16">
-            <h3 className="text-2xl md:text-5xl  text-white hover:scale-105">
+            <h3 className="text-3xl md:text-5xl  text-white hover:scale-105">
               <Link href="/events">Events</Link>
             </h3>
             <div className=" grid md:grid-cols-2 grid-cols-1 gap-3 p-10">
