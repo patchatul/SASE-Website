@@ -210,7 +210,7 @@ export default function PolaroidCard({
               alt={member.name}
               fill
               sizes="(min-width: 1024px) 25vw, 90vw"
-              className="object-cover object-top"
+              className="object-cover object-[60%]"
             />
           ) : (
             "[PHOTO]"

@@ -111,21 +111,21 @@ export const eboard: Member[] = [
   { name: "Vaanya Sharma", role: " Professional Development Event Director", linkedin: "https://www.linkedin.com/in/vaanya-sharma-/" },
 ];
 export const photos: Record<string, string> = {
-  "Sriharsha Manthena": "/eboard_pics/Sriharsha.jpeg",
-  "Annalise Yee": "/eboard_pics/Annalise.jpg",
+  "Sriharsha Manthena": "/eboard_pics/harsha.jpg",
+  "Annalise Yee": "/eboard_pics/annalise.jpg",
   "Adhyayan Tiwari": "/eboard_pics/Adhyayan.png",
-  "Katarina Jenarine": "/eboard_pics/Kat.jpeg",
+  "Katarina Jenarine": "/eboard_pics/kat.jpg",
   "Lakesh Kumar Ram Rakhiani": "/eboard_pics/Laksh.jpeg",
-  "Nishanth Baddigam": "/eboard_pics/Nishanth.png",
-  "Kundana Anumakonda": "/eboard_pics/Kundana.jpg",
-  "Patcharalak Tulyakul": "/eboard_pics/Patcharalak.jpg",
-  "Minh Hoa Vu": "/eboard_pics/Hoa.jpeg",
+  "Nishanth Baddigam": "/eboard_pics/nishanth.jpg",
+  "Kundana Anumakonda": "/eboard_pics/kundana.jpg",
+  "Patcharalak Tulyakul": "/eboard_pics/pat.jpg",
+  "Minh Hoa Vu": "/eboard_pics/hoa.jpg",
   "Arie Bhagan": "/eboard_pics/Arie.jpeg",
-  "Ashita Agrawal": "/eboard_pics/Ashita.jpeg",
-  "Felicity Liu": "/eboard_pics/Felicity.jpeg",
-  "Radhika Rao": "/eboard_pics/Radhika.jpeg",
+  "Ashita Agrawal": "/eboard_pics/ashita.jpg",
+  "Felicity Liu": "/eboard_pics/felicity.jpg",
+  "Radhika Rao": "/eboard_pics/radhika.jpg",
   "Rakshit Bhardwaj": "/eboard_pics/Rakshit.JPG",
-  "Vaanya Sharma": "/eboard_pics/Vaanya.jpeg",
+  "Vaanya Sharma": "/eboard_pics/vaanya.jpg",
 };
 
 export const details: Record<string, { year: string; major: string; bio: string }> = {
