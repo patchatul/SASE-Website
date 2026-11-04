@@ -285,6 +285,7 @@ export default function LandingPage() {
             </div>
             <CardList
               columns={4}
+              className="object-cover object-[60%] "
               minCardWidth={220}
               carouselBelow={1024}
               items={eboard}
@@ -294,6 +295,7 @@ export default function LandingPage() {
                   index={index}
                   member={member}
                   photo={photos[member.name]}
+                  
                 />
               )}
             />

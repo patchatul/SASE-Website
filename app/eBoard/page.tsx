@@ -49,7 +49,7 @@ export default function Eboard() {
                     alt={m.name}
                     fill
                     sizes="(min-width: 1024px) 400px, 100vw"
-                    className="object-cover object-top"
+                    className="object-cover object-[60%]"
                   />
                 ) : (
                   "[PHOTO]"
@@ -92,7 +92,7 @@ export default function Eboard() {
                     alt={selected.name}
                     fill
                     sizes="(min-width: 768px) 400px, 100vw"
-                    className="object-cover object-[50%_25%]"
+                    className="object-cover object-[60%]"
                   />
                 ) : (
                   "[PHOTO]"
