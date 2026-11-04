@@ -5,7 +5,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 
 export default function EventsPage() {
-  return <Suspense fallback={<main className="min-h-screen bg-(--color-secondary) p-10 text-(--color-primary)">Loading events…</main>}><EventsContent /></Suspense>;
+  return <Suspense fallback={<main className="min-h-screen bg-(--color-secondary) p-10 pt-24 text-(--color-primary)">Loading events…</main>}><EventsContent /></Suspense>;
 }
 
 async function EventsContent() {
@@ -15,7 +15,7 @@ async function EventsContent() {
   const { upcoming, past } = splitEvents(events);
 
   return (
-    <main className="min-h-screen bg-(--color-secondary) px-4 py-12 text-(--color-primary) sm:px-6 lg:px-10">
+    <main className="min-h-screen bg-(--color-secondary) px-4 pb-12 pt-24 text-(--color-primary) sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8">
           <p className="text-sm font-semibold tracking-[0.2em] uppercase">USF SASE</p>

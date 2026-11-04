@@ -33,9 +33,9 @@ export default function LandingPage() {
 
   return (
     <div className="w-full">
-      <main className="relative isolate flex md:h-[80dvh] min-h-120 w-full flex-col justify-end overflow-hidden bg-(--color-primary) md:px-10 md:pt-12 lg:px-16 lg:pt-16">
+      <main className="relative isolate flex md:h-[80dvh] min-h-120 w-full flex-col justify-end overflow-hidden bg-(--color-primary) md:px-10 md:pt-20 lg:px-16">
         {/*slideshow images */}
-        <div className="absolute inset-0 overflow-hidden md:inset-x-10 md:top-12 md:bottom-0 md:rounded-t-3xl md:shadow-2xl lg:inset-x-16 lg:top-16">
+        <div className="absolute inset-0 overflow-hidden md:inset-x-10 md:top-20 md:bottom-0 md:rounded-t-3xl md:shadow-2xl lg:inset-x-16">
           <AnimatePresence initial={false}>
             <motion.div
               key={memberImages[activeImage].src}

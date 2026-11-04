@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bebas_Neue } from "next/font/google";
 import Footer from "@/components/footer";
 import "./globals.css";
+import MenuBar from "@/components/menubar";
 
 //font from google fonts
 const bebasNeue = Bebas_Neue({
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${bebasNeue.className} ${bebasNeue.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen flex-col">
+        <MenuBar />
         <div className="flex-1">{children}</div>
         <Footer />
       </body>
