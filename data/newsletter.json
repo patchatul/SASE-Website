@@ -1,0 +1,133 @@
+[
+  {
+    "id": "ebc-halloween-social",
+    "title": "SASE x EBC Halloween Social",
+    "date": "Oct 28, 2026",
+    "summary": "A fun and spooky gathering aranged by SASE x EBC for Halloween!",
+    "description": "Hosted at MSC 3706 Oak Room from 3:30 - 5:30 PM; mmebers enjoyed various board games and complimentary arts and crafts such as Mini Pumpkin Painting as well as Halloween origami. The event also supplied free food and drinks from Tsaocaa!",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "opencv-workshop",
+    "title": "OpenCV and Computer Vision Workshop",
+    "date": "Oct 22, 2026",
+    "summary": "Building a Face Recognition based Attendence System with Vaanya Sharma",
+    "description": "Led by the Professional Event Director, Vaanya Sharma, participants used Python and Google Collab for coding; OpenCV for image processing and webcam access; pre-trained face detection models and CSV files to store attendence records.",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "volunteering-rowlett-park",
+    "title": "Volunteering at Rowlett Park",
+    "date": "Oct 17, 2026",
+    "summary": "Taking care of our parks with SASE",
+    "description": "Volunteers helped clean up Rowlett Park to encourage positive enviroment interactions while also keeping our parks clean! ",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "build-your-own-pcb",
+    "title": "Build Your Own PCB",
+    "date": "Oct 13, 2026",
+    "summary": "Learning how to build a PCB with Adhyayan Tiwari",
+    "description": "Participants learnt how to circuit schematic from scratch; select components and design connections; design their PCB layout and route connections and run design checks and prepare their PCB for manufacturing",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "karaoke-with-sase",
+    "title": "Karaoke with SASE",
+    "date": "Oct 8, 2026",
+    "summary": "Celebrating the end of midterm season with karaoke, arts and crafts, and food!",
+    "description": "A lot of singing was done alongside a raffle/giveaway for the karaoke winner. Indian food and art and crafts were indulged in and the participants also got a sneak peak of upcoming workshops and professional development panels.",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "big-little-launch",
+    "title": "Big Little Program Launch",
+    "date": "Sep 28, 2026",
+    "summary": "Big Little program was launched!",
+    "description": "Bigs and littles were introduced to eachother based on their current major/interests such as engineering, medicine, healthcare, software development, cybersecurity, and applied trades, etc. Big and littles had icebreakers and won prizes at the launch!",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "video", "src": "", "alt": "[DESCRIBE VIDEO]" }
+    ]
+  },
+  {
+    "id": "battle-of-orgs",
+    "title": "Battle of the Orgs",
+    "date": "Sep 24, 2026",
+    "summary": "Head-to-head jeopardy game with NSBE, THETA TAU, & SASE",
+    "description": "Organizations NSBE, THETA TAU, and SASE came together for an epic and heated jeopardy game combined wth free pizza!",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "big-little-prelaunch",
+    "title": "Big-Little Program Pre-Launch",
+    "date": "Sep 14, 2026",
+    "summary": "The big little program pre-launch!",
+    "description": "[]",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "projects-team-launch",
+    "title": "Projects Team Launch",
+    "date": "Sep 11, 2026",
+    "summary": "The project teams launch where the 5 projects teams are introduced to eachother! ",
+    "description": "Mmembers got to know what project they were assigned to and what the project entails. They also got to meet their project team members and learn about the upcoming events for the semester. Kickoff bingo was played with the winner getting a free 2026 STEMCONNECT Conference ticket",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  },
+  {
+    "id": "sase-kickoff",
+    "title": "SASE Kickoff",
+    "date": "Aug 27, 2026",
+    "summary": "Get introduced to SASE, meet their officers, and learn about the upcoming events for the semester!",
+    "description": "Participants got to meet the SASE officers and learn about the upcoming events for the semester. They also got to enjoy free food and drinks, play icebreaker games, and were informed of programs like Big Little, Project Teams, and Professional Development Panels.",
+    "cover": "",
+    "media": [
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 1]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 2]" },
+      { "type": "image", "src": "", "alt": "[DESCRIBE PHOTO 3]" }
+    ]
+  }
+  
+]
