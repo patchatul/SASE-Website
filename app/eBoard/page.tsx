@@ -22,7 +22,11 @@ export default function Eboard() {
           MEET THE EBOARD
         </h1>
         <div className="mx-auto mt-6 h-2 w-36 rounded-full bg-[#84ca44]" />
-        <p className="mt-8 text-lg tracking-wide text-[#141b4d]">
+         <p className="text-xl md:text-2xl text-(--color-primary) mt-6 md:mt-10">
+                Our executive board leads USF SASE: planning events, running our
+                programs, and supporting members all year long.
+              </p>
+        <p className="text-sm text-(--color-primary)">
           Click on any polaroid to learn more about each member!
         </p>
       </section>
@@ -49,7 +53,7 @@ export default function Eboard() {
                     alt={m.name}
                     fill
                     sizes="(min-width: 1024px) 400px, 100vw"
-                    className="object-cover object-[60%]"
+                    className="object-cover object-[50%]"
                   />
                 ) : (
                   "[PHOTO]"
@@ -92,7 +96,7 @@ export default function Eboard() {
                     alt={selected.name}
                     fill
                     sizes="(min-width: 768px) 400px, 100vw"
-                    className="object-cover object-[60%]"
+                    className="object-cover object-[50%]"
                   />
                 ) : (
                   "[PHOTO]"
