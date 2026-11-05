@@ -5,7 +5,7 @@ import ProjectTeam from "@/components/projectTeam";
 
 export default function Programs() {
   return (
-  <div>
+  <div className="pt-24">
     <h2 className="text-(--color-primary) text-2xl font-semibold">Programs</h2>
     {/* use BigLittle and ProjectTeam components inside Programs page, we can use tab to open each one */}
     <BigLittle />
