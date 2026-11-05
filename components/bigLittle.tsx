@@ -137,7 +137,6 @@ export default function BigLittle() {
     <section aria-labelledby="big-little-heading" className="w-full bg-[#E9E8E8] text-[#101820]">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <header className="mb-10">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#3F4444]">SASE USF · Mentorship</p>
           <h2 id="big-little-heading" className="text-5xl leading-none text-[#141B4D] sm:text-7xl" style={headingFont}>BIG–LITTLE PROGRAM</h2>
           <p className="mt-3 text-lg text-[#3F4444]">Building connections, one friendship at a time.</p>
         </header>
@@ -187,15 +186,14 @@ export default function BigLittle() {
         </div>
 
         <div className="space-y-12">
-          {families.map((family, index) => {
+          {families.map((family) => {
             const bigCount = family.members.filter((member) => member.role === "Big").length;
             return (
               <section key={family.name} id={`big-little-${family.name.toLowerCase()}`} aria-labelledby={`family-heading-${family.name}`} className="scroll-mt-10 overflow-hidden rounded-2xl border border-[#D0D0CE] bg-[#F7F7F9] shadow-sm">
                 <div className="border-l-8 px-5 py-6 sm:px-8" style={{ borderColor: family.color }}>
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h4 id={`family-heading-${family.name}`} className="text-4xl text-[#141B4D] sm:text-5xl" style={headingFont}>{family.name.toUpperCase()} FAMILY</h4>
-                    <span className="text-xl text-[#141B4D]" style={headingFont}>{String(index + 1).padStart(2, "0")} / FOUR ELEMENTS</span>
-                  </div>
+                     </div>
                   <p className="mt-2 text-sm font-medium uppercase tracking-wide text-[#3F4444]">
                     {family.members.length} members · {bigCount} Bigs · {family.members.length - bigCount} Littles
                   </p>

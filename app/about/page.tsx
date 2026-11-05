@@ -142,7 +142,7 @@ export default function About() {
       <style>{`@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }`}</style>
 
       {/* HERO */}
-      <section className={`${pad} grid items-center gap-10 md:grid-cols-2`}>
+      <section className={`${pad} grid items-center gap-10 pt-24 md:grid-cols-2`}>
         <div>
           <p className="mb-2 text-xl tracking-widest text-[#3f4444]">ABOUT THE CLUB</p>
           <h1 className="mb-5 text-5xl font-semibold md:text-7xl">
@@ -207,7 +207,7 @@ export default function About() {
       </section>
 
       {/* MISSION */}
-      <section id="mission" className="bg-[#89abe3] px-8 py-12 text-center md:px-20">
+      <section id="mission" className="scroll-mt-16 bg-[#89abe3] px-8 py-12 text-center md:px-20">
         <h2 className="mb-4 text-4xl font-semibold md:text-5xl">OUR MISSION</h2>
         <p className="mx-auto max-w-4xl text-2xl leading-relaxed tracking-wide md:text-3xl">
           To help Asian heritage scientists and engineers reach their full potential in

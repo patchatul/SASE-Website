@@ -37,9 +37,9 @@ export default function LandingPage() {
 
   return (
     <div className="w-full">
-      <main className="relative isolate flex md:h-[80dvh] min-h-120 w-full flex-col justify-end overflow-hidden bg-(--color-primary) md:px-10 md:pt-12 lg:px-16 lg:pt-16">
+      <main className="relative isolate flex min-h-175 w-full flex-col justify-end overflow-hidden bg-(--color-primary) md:h-[90dvh] md:px-10 md:pt-20 lg:px-16">
         {/*slideshow images */}
-        <div className="absolute inset-0 overflow-hidden md:inset-x-10 md:top-12 md:bottom-0 md:rounded-t-3xl md:shadow-2xl lg:inset-x-16 lg:top-16">
+        <div className="absolute inset-0 overflow-hidden md:inset-x-10 md:top-20 md:bottom-0 md:rounded-t-3xl md:shadow-2xl lg:inset-x-16">
           <AnimatePresence initial={false}>
             <motion.div
               key={memberImages[activeImage].src}
@@ -67,10 +67,10 @@ export default function LandingPage() {
         </div>
         {/*words on top of slideshow images */}
         <div className="relative z-10 mt-auto flex flex-col justify-center p-5 sm:p-8 lg:p-12">
-          <h1 className="text-4xl text-white md:text-6xl">
+          <h1 className="text-5xl text-white md:text-7xl">
             Society of Asian Scientists and Engineers
           </h1>
-          <p className="text-3xl text-(--color-primary) md:text-4xl">
+          <p className="text-3xl text-(--color-primary) md:text-5xl">
             University of South Florida
           </p>
           <div className="flex flex-wrap gap-3">
@@ -111,7 +111,7 @@ export default function LandingPage() {
                   tabIndex={0}
                 >
                   {" "}
-                  <Float className="hidden lg:block">
+                  <Float className="">
                     <Image
                       src={PandaEE}
                       alt="USF SASE Panda Sticker"
@@ -138,7 +138,7 @@ export default function LandingPage() {
             </div>
             {/*a line for stat */}
             {/* Stats: navy box that pops up, numbers count from 0 */}
-            <div className="w-full bg-(--color-primary) py-6 md:py-8">
+            <div className="w-full bg-(--color-primary) py-10 md:py-20">
               <PopIn className="mx-auto w-full max-w-6xl px-4">
                 <div className="grid grid-cols-2 gap-y-6 md:grid-cols-4 md:divide-x md:divide-white/20">
                   {siteStats.map((stat) => (
@@ -146,7 +146,7 @@ export default function LandingPage() {
                       key={stat.label}
                       className="flex flex-col items-center gap-1 px-2"
                     >
-                      <span className="text-4xl text-white md:text-5xl">
+                      <span className="text-4xl text-white md:text-6xl">
                         <CountUp value={stat.value} />
                       </span>
                       <span className="text-sm tracking-widest text-(--color-secondary) uppercase md:text-lg">
@@ -285,7 +285,7 @@ export default function LandingPage() {
             </div>
             <CardList
               columns={4}
-              className="object-cover object-[60%] "
+              className="object-cover object-[50%] "
               minCardWidth={220}
               carouselBelow={1024}
               items={eboard}
@@ -295,7 +295,6 @@ export default function LandingPage() {
                   index={index}
                   member={member}
                   photo={photos[member.name]}
-                  
                 />
               )}
             />
@@ -314,13 +313,24 @@ export default function LandingPage() {
             <h3 className="text-3xl md:text-5xl  text-white hover:scale-105">
               <Link href="/events">Events</Link>
             </h3>
-            <div className=" grid md:grid-cols-2 grid-cols-1 gap-3 p-10">
-              <div className="md:text-3xl text-xl text-left text-white">
-                Professional Development | Techincal Workshop | Social |
-                Volunteer | Office Tour
-              </div>
-              <div></div>
-            </div>
+            <ul className="max-w-4xl flex flex-wrap justify-center gap-x-5 gap-y-2 text-center text-2xl text-white md:text-3xl">
+              {[
+                "Professional Development",
+                "Technical Workshops",
+                "community service",
+                "Cultural events",
+                "Networking events",
+                "Office Tour",
+                "BIG-LITTLE MENTORSHIP",
+                "PROJECTS TEAMS",
+                "INTERNS PROGRAM",
+                "Conferences",
+              ].map((eventType, index) => (
+                <li key={`${eventType}-${index}`} className="inline-flex items-center gap-3 before:text-[#84ca44] before:content-['|'] last:after:content-['|'] last:after:text-[#84ca44]">
+                  {eventType}
+                </li>
+              ))}
+            </ul>
             <div className="flex gap-5 ">
               <Link
                 href="/events"

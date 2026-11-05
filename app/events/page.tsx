@@ -3,9 +3,10 @@ import EventCardActions from "@/components/eventCardActions";
 import { getCalendarEvents, getSaseEvents, splitEvents } from "@/lib/events";
 import { connection } from "next/server";
 import { Suspense } from "react";
+import Link from "next/dist/client/link";
 
 export default function EventsPage() {
-  return <Suspense fallback={<main className="min-h-screen bg-(--color-secondary) p-10 text-(--color-primary)">Loading events…</main>}><EventsContent /></Suspense>;
+  return <Suspense fallback={<main className="min-h-screen bg-(--color-secondary) p-10 pt-24 text-(--color-primary)">Loading events…</main>}><EventsContent /></Suspense>;
 }
 
 async function EventsContent() {
@@ -15,10 +16,9 @@ async function EventsContent() {
   const { upcoming, past } = splitEvents(events);
 
   return (
-    <main className="min-h-screen bg-(--color-secondary) px-4 py-12 text-(--color-primary) sm:px-6 lg:px-10">
+    <main className="min-h-screen bg-(--color-secondary) px-4 pb-12 pt-24 text-(--color-primary) sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8">
-          <p className="text-sm font-semibold tracking-[0.2em] uppercase">USF SASE</p>
           <h1 className="mt-2 text-5xl md:text-6xl">Events</h1>
           <p className="mt-3 max-w-2xl text-lg">Find what is happening with SASE and join us at our next event.</p>
         </div>
@@ -76,7 +76,7 @@ function EventCard({ event }: { event: Awaited<ReturnType<typeof getSaseEvents>>
           // eslint-disable-next-line @next/next/no-img-element
           <img src={event.image} alt={`${event.title} flyer`} className="h-full w-full object-cover" loading="lazy" />
         ) : (
-          <span>No flyer yet! (┬┬﹏┬┬)</span>
+          <span>visit <Link href="https://www.instagram.com/usfsase/" className="text-[#84ca44] underline">USFSASE Instagram</Link> for flyers</span>
         )}
       </div>
       <div className="flex flex-1 flex-col pt-5">
