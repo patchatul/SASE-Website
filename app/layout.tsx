@@ -58,12 +58,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${bebasNeue.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        {children}
-        <footer>
-          <Footer />
-        </footer>
+    <html
+      lang="en"
+      className={`${bebasNeue.className} ${bebasNeue.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-screen flex-col">
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );
