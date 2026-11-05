@@ -295,7 +295,6 @@ export default function LandingPage() {
                   index={index}
                   member={member}
                   photo={photos[member.name]}
-                  
                 />
               )}
             />
@@ -314,13 +313,24 @@ export default function LandingPage() {
             <h3 className="text-3xl md:text-5xl  text-white hover:scale-105">
               <Link href="/events">Events</Link>
             </h3>
-            <div className=" grid md:grid-cols-2 grid-cols-1 gap-3 p-10">
-              <div className="md:text-3xl text-xl text-left text-white">
-                Professional Development | Techincal Workshop | Social |
-                Volunteer | Office Tour
-              </div>
-              <div></div>
-            </div>
+            <ul className="max-w-4xl flex flex-wrap justify-center gap-x-5 gap-y-2 text-center text-2xl text-white md:text-3xl">
+              {[
+                "Professional Development",
+                "Technical Workshops",
+                "community service",
+                "Cultural events",
+                "Networking events",
+                "Office Tour",
+                "BIG-LITTLE MENTORSHIP",
+                "PROJECTS TEAMS",
+                "INTERNS PROGRAM",
+                "Conferences",
+              ].map((eventType, index) => (
+                <li key={`${eventType}-${index}`} className="inline-flex items-center gap-3 before:text-[#84ca44] before:content-['|'] last:after:content-['|'] last:after:text-[#84ca44]">
+                  {eventType}
+                </li>
+              ))}
+            </ul>
             <div className="flex gap-5 ">
               <Link
                 href="/events"
