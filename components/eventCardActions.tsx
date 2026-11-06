@@ -18,7 +18,7 @@ export default function EventCardActions({ description, url, title }: {
           aria-expanded={open}
           aria-controls={descriptionId}
           onClick={() => setOpen((value) => !value)}
-          className="rounded-lg bg-[#006b9d] px-3 py-3 text-center text-lg font-semibold text-white transition hover:bg-[#005982] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="rounded-lg bg-[#006b9d] px-3 py-3 text-center text-sm font-medium text-white transition hover:bg-[#005982] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-base"
         >
           Event info
         </button>
@@ -26,7 +26,7 @@ export default function EventCardActions({ description, url, title }: {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg bg-(--green) px-3 py-3 text-center text-lg font-semibold text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="rounded-lg bg-(--green) px-3 py-3 text-center text-sm font-medium text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-base"
         >
           BullsConnect ↗ <span className="sr-only">for {title} (opens in a new tab)</span>
         </a>

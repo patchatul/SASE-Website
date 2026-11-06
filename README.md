@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ### Events calendar
 
-The Events page reads the public SASE BullsConnect ICS feed and refreshes it every 15 minutes. Event cards use that feed for titles, dates, descriptions, and links. When a public event page exposes an `og:image`, its flyer appears on the card; otherwise the card displays `No flyer yet! cry`.
+The Events page reads the public SASE BullsConnect ICS feed with a 24-hour cache lifetime. Event cards use that feed for titles, dates, descriptions, and links. Flyer URLs come from BullsConnect's public event data and are cached for one hour; when an event has no flyer, the card displays the Instagram fallback.
 
 To use the Google Calendar API for the month calendar, subscribe a **public** Google calendar to the SASE ICS feed, enable the Google Calendar API in Google Cloud, and set these server-side variables in `.env.local` or your deployment environment:
 
