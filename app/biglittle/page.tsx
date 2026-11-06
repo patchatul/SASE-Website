@@ -122,7 +122,7 @@ function MemberCard({ member, family }: { member: Member; family: Family }) {
         >
           {member.role} · {family.name}
         </span>
-        <h4 className="min-h-12 break-words text-base font-bold leading-snug text-[#141B4D]">{member.name}</h4>
+        <h4 className="min-h-12 wrap-break-word text-base font-bold leading-snug text-[#141B4D]">{member.name}</h4>
         <p className="text-sm leading-snug text-[#3F4444]">{member.major}</p>
         <p className="text-xs font-medium text-[#686D76]">{member.year}</p>
       </div>

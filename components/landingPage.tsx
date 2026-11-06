@@ -219,7 +219,7 @@ export default function LandingPage() {
                 />
               </div>
               <Link
-                href="/programs"
+                href="/projects"
                 className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
               >
                 View all Project Teams
@@ -259,7 +259,7 @@ export default function LandingPage() {
                 />
               </div>
               <Link
-                href="/programs"
+                href="/biglittle"
                 className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
               >
                 View all Big-Little Members
