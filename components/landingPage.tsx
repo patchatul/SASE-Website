@@ -15,12 +15,21 @@ import {
   projectTeams,
   bigLittle,
   eboard,
-  photos, eventTypes
+  photos,
+  eventTypes,
 } from "@/data/membersInfo";
 import PolaroidCard from "@/components/cards";
 
-/*main landing page */
+import NewsletterCards, {
+  type NewsletterEvent,
+} from "@/components/newsletterCards";
+import events from "@/data/newsletter.json";
 
+const sorted = [...(events as NewsletterEvent[])].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+);
+const latestOne = sorted.slice(0, 1);
+const latestThree = sorted.slice(0, 3);
 
 const listVariants = {
   hidden: {},
@@ -36,7 +45,7 @@ const itemVariants = {
     transition: { type: "spring" as const, stiffness: 260, damping: 20 },
   },
 };
-
+/*main landing page */
 export default function LandingPage() {
   const [activeImage, setActiveImage] = useState(0);
 
@@ -329,25 +338,25 @@ export default function LandingPage() {
               <Link href="/events">Events</Link>
             </h3>
             <motion.ul
-  variants={listVariants}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true, amount: 0.2 }}
-  className="mx-auto grid w-full max-w-6xl grid-cols-2 justify-items-center gap-x-4 gap-y-6 lg:grid-cols-5"
->
-  {eventTypes.map((eventType, index) => (
-    <motion.li
-      key={eventType}
-      variants={itemVariants}
-      className="flex min-h-24 w-full max-w-56 flex-col items-center justify-center gap-1 border-l-4 border-[#84ca44] px-3 text-center text-white"
-    >
-      <span className="text-sm tracking-widest text-[#84ca44] md:text-base">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <span className="text-2xl md:text-3xl">{eventType}</span>
-    </motion.li>
-  ))}
-</motion.ul>
+              variants={listVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="mx-auto grid w-full max-w-6xl grid-cols-2 justify-items-center gap-x-4 gap-y-6 lg:grid-cols-5"
+            >
+              {eventTypes.map((eventType, index) => (
+                <motion.li
+                  key={eventType}
+                  variants={itemVariants}
+                  className="flex min-h-24 w-full max-w-56 flex-col items-center justify-center gap-1 border-l-4 border-[#84ca44] px-3 text-center text-white"
+                >
+                  <span className="text-sm tracking-widest text-[#84ca44] md:text-base">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-2xl md:text-3xl">{eventType}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
             <div className="flex gap-5 ">
               <Link
                 href="/events"
@@ -365,10 +374,32 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-        {/* add later contacts = footer ? */}
-        {/*<section>
+        {/* newsletter */}
+        <section className="w-ful  bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary)  text-(--color-primary) md:py-12 px-5 py-8">
+          <div className="mx-auto flex w-full max-w-none flex-col items-center gap-10 px-4 py-10 sm:px-6 lg:px-10 lg:py-14 2xl:px-16">
+            <h3 className="text-3xl md:text-5xl  text-(--color-primary)">
+              <Link href="/newsletter">Newsletter</Link>
+            </h3>
+            <div className="w-full mx-auto max-w-5xl m-5">
+              <div className="w-full md:hidden mx-auto max-w-xs">
+                <NewsletterCards events={latestOne} />
+              </div>
 
-        </section>*/}
+              {/* md and up: the 3 newest events */}
+              <div className="hidden w-full md:block ">
+                <NewsletterCards events={latestThree} />
+              </div>
+            </div>
+            <div>
+              <Link
+                href="/newsletter"
+                className="text-xl rounded-full border-2 bg-(--light-green) px-6 py-3"
+              >
+                View our past events and newsletters
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
