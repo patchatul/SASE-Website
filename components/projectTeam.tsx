@@ -19,7 +19,6 @@ const circleColors = [
 ];
 
 export default function ProjectTeam() {
-  // null means show the overview of all teams
   const [selectedTeam, setSelectedTeam] = useState<number | null>(null);
   const team = teams.find((t) => t.id === selectedTeam);
   const teamIndex = teams.findIndex((t) => t.id === selectedTeam);
