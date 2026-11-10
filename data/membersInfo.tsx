@@ -55,16 +55,16 @@ export const offers: InfoItem[] = [
 export const projectTeams: CardItem[] = [
   {
     name: "AI for Brain Tumor Detection",
-    description: "One sentence long description of what the project is about.",  image: "/members/project_team.jpeg",
+    description: "A machine learning project that classifies brain tumors from MRI scans, comparing ResNet-18, ResNet-50, and EfficientNet-B0 to find the most reliable model.",  image: "/members/project_team.jpeg",
   },
-  { name: "Assistive Walking Device", description: "What this project is about.",  image: "/members/project_team.jpeg" },
-  {name: "Cancer screening device", description: "What this project is about.",  image: "/members/project_team.jpeg" },
-  { name: "Code for Community", description: "What this project is about.",  image: "/members/project_team1.jpeg" },
-  { name: "Delivery bot", description: "What this project is about.",  image: "/members/project_team.jpeg" },
-  { name: "Solar water purification", description: "What this project is about.",  image: "/members/project_team.jpeg" },
-  {name: "Smart Robot", description: "What this project is about.",  image: "/members/project_team.jpeg" },
+  { name: "Assistive Walking Device", description: "A hardware project building an affordable smart walking stick that helps visually impaired individuals navigate their surroundings with greater confidence and independence.",  image: "/blog_pics/projectmeet3.webp" },
+  {name: "Cancer screening device", description: "A biomedical project building a low-cost paper test strip that flags early warning signs of cancer from a single drop of blood.",  image: "/blog_pics/project_kickoff1.webp" },
+  { name: "Code for Community", description: "A software project that partners with local businesses and communities to build websites that serve their needs.",  image: "/blog_pics/project_kickoff3.webp" },
+  { name: "Delivery bot", description: "A robotics project building a small autonomous robot that delivers items to users who order through a website.",  image: "/blog_pics/projectmeet2.webp" },
+  { name: "Solar water purification", description: "A project building a low-cost gravity filter that turns dirty water into cleaner, usable water through five layers of rock, sand, activated charcoal, and cloth.",  image: "/blog_pics/projectmeet1.webp" },
+  {name: "Smart Robot", description: "A robotics project building a small autonomous robot that can perform various tasks.",  image: "/blog_pics/project_kickoff2.webp" },
 ];
- 
+
 export const bigLittle: CardItem[] = [
   {
     name: "Resume Reviews",
@@ -82,7 +82,7 @@ export const bigLittle: CardItem[] = [
     name: "Internships & Research",
     description:
       "Learn how to find and land internships and research positions in STEM.",
-      image: "/members/big_little.jpeg"
+      image: "/blog_pics/biglit4.webp"
   },
 ];
  
@@ -207,3 +207,15 @@ export const details: Record<string, { year: string; major: string; bio: string 
     bio: "Interested in coding, technology and web development. She loves reading, learning new things, being involved on campus, and exploring new places. Right now she is working on personal coding projects and exploring APIs and application development.",
   },
 };
+export const eventTypes = [
+  "Professional Development",
+  "Technical Workshops",
+  "Community Service",
+  "Cultural Events",
+  "Networking Events",
+  "Office Tour",
+  "Big-Little Mentorship",
+  "Project Teams",
+  "Interns Program",
+  "Conferences",
+];

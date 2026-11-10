@@ -17,8 +17,8 @@ export default function MenuBar() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <nav className="fixed inset-x-3 top-0.5 z-50 lg:inset-x-[10%] rounded-full border border-white/50 bg-linear-to-b from-white/35 to-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_2px_rgba(255,255,255,0.3),0_6px_24px_rgba(0,0,0,0.12)] backdrop-blur-[6px] backdrop-saturate-180">
-      <div className="flex h-12 items-center justify-between px-6 md:px-10">
+    <nav className="fixed inset-x-3 top-1 p-1 z-50 mx-auto max-w-8xl lg:inset-x-[5%] rounded-full border border-white/50 bg-linear-to-b from-white/35 to-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_-1px_2px_rgba(255,255,255,0.3),0_6px_24px_rgba(0,0,0,0.12)] backdrop-blur-[6px] backdrop-saturate-180">
+       <div className="flex h-12 items-center justify-between px-6 md:px-10">
         <Link href="/" className="hidden sm:block">
           <Image
             src="/sase_logos/navyHorizontal.png"
@@ -31,7 +31,7 @@ export default function MenuBar() {
         <motion.ul
           layoutRoot
           onMouseLeave={() => setHovered(null)}
-          className="mx-auto flex items-center gap-3 text-sm tracking-[0.5px] whitespace-nowrap text-slate-900 [text-shadow:0_0_1px_#fff,0_0_6px_#fff,0_0_12px_#fff] sm:mx-0 sm:gap-6 sm:text-base lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:gap-11 lg:text-lg"
+          className="mx-auto flex items-center gap-3 text-md tracking-[0.5px] whitespace-nowrap text-slate-900 [text-shadow:0_0_1px_#fff,0_0_6px_#fff,0_0_12px_#fff] sm:mx-0 sm:gap-6 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:gap-11 lg:text-lg"
         >
           {links.map((link) => (
             <li key={link.href} className="relative">
@@ -53,7 +53,7 @@ export default function MenuBar() {
                 onMouseEnter={() => setHovered(link.href)}
                 onFocus={() => setHovered(link.href)}
                 onBlur={() => setHovered(null)}
-                className="transition-colors duration-200 hover:text-black"
+                className="transition-colors duration-200 hover:text-black "
               >
                 {link.label}
               </Link>

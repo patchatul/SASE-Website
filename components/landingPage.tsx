@@ -15,12 +15,27 @@ import {
   projectTeams,
   bigLittle,
   eboard,
-  photos,
-  details,
+  photos, eventTypes
 } from "@/data/membersInfo";
 import PolaroidCard from "@/components/cards";
 
 /*main landing page */
+
+
+const listVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: 20 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 260, damping: 20 },
+  },
+};
 
 export default function LandingPage() {
   const [activeImage, setActiveImage] = useState(0);
@@ -37,7 +52,7 @@ export default function LandingPage() {
 
   return (
     <div className="w-full">
-      <main className="relative isolate flex min-h-175 w-full flex-col justify-end overflow-hidden bg-(--color-primary) md:h-[90dvh] md:px-10 md:pt-20 lg:px-16">
+      <main className="relative isolate flex min-h-160 w-full flex-col justify-end overflow-hidden bg-(--color-primary) md:min-h-175 md:h-[90dvh] md:px-10 md:pt-20 lg:px-16">
         {/*slideshow images */}
         <div className="absolute inset-0 overflow-hidden md:inset-x-10 md:top-20 md:bottom-0 md:rounded-t-3xl md:shadow-2xl lg:inset-x-16">
           <AnimatePresence initial={false}>
@@ -66,23 +81,23 @@ export default function LandingPage() {
           <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-(--color-secondary) via-white/10 to-transparent" />
         </div>
         {/*words on top of slideshow images */}
-        <div className="relative z-10 mt-auto flex flex-col justify-center p-5 sm:p-8 lg:p-12">
+        <div className="relative z-10 mt-auto flex flex-col justify-center  gap-2 px-5 pt-5 pb-0 p-5 sm:p-8 lg:p-12">
           <h1 className="text-5xl text-white md:text-7xl">
             Society of Asian Scientists and Engineers
           </h1>
-          <p className="text-3xl text-(--color-primary) md:text-5xl">
+          <h2 className="text-3xl text-(--color-primary) md:text-5xl">
             University of South Florida
-          </p>
+          </h2>
           <div className="flex flex-wrap gap-3">
             <Link
               href="https://bullsconnect.usf.edu/SASE/club_signup"
-              className="text-md rounded-full border-2  bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+              className="text-xl rounded-full border-2  bg-(--light-blue) px-6 py-3"
             >
               Join us
             </Link>
             <Link
               href="/events"
-              className="text-md rounded-full border-2 bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+              className="text-xl rounded-full border-2 bg-(--light-blue) px-6 py-3"
             >
               See events
             </Link>
@@ -98,11 +113,11 @@ export default function LandingPage() {
             <div className="mx-auto w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 items-center px-4 py-8 gap-4 md:gap-5">
               <div className="flex max-w-3xl flex-col text-center col-span-2 ">
                 <h2 className="text-3xl md:text-5xl pb-5">Who we are</h2>
-                <p className="text-3xl md:text-4xl text-left">
+                <h3 className="font-bebas text-3xl md:text-4xl text-left">
                   USF SASE is a student chapter of the Society of Asian
                   Scientists and Engineers at University of South Florida
                   (Tampa, Florida).
-                </p>
+                </h3>
               </div>
               {/*panda sticker on the right */}
               <div className="flex flex-col items-center gap-3 col-span-1">
@@ -129,7 +144,7 @@ export default function LandingPage() {
                   </div>
                   <Link
                     href="/about"
-                    className="text-md rounded-full border-2 bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+                    className="text-xl rounded-full border-2 bg-(--light-blue) px-6 py-3"
                   >
                     Learn more about us
                   </Link>
@@ -188,7 +203,7 @@ export default function LandingPage() {
           </h3>
           <div className="gap-5">
             <div className="mx-auto max-w-none flex w-full flex-col items-center gap-10 px-4 py-2 sm:px-6 sm:py-6 lg:px-10 lg:py-8 2xl:px-16">
-              <h4 className="text-4xl underline hover:scale-115 hover:text-white">
+              <h4 className="text-4xl underline">
                 <Link href="/programs">Project Teams</Link>
               </h4>
               <div className="grid grid-cols-2 mx-auto max-w-4xl px-8">
@@ -202,7 +217,7 @@ export default function LandingPage() {
                     {projectTeams.length}{" "}
                   </span>
                   projects
-                  <br /> <span className="text-white text-4xl"> 30 </span>{" "}
+                  <br /> <span className="text-white text-4xl"> 45 </span>{" "}
                   students
                 </p>
               </div>
@@ -220,7 +235,7 @@ export default function LandingPage() {
               </div>
               <Link
                 href="/projects"
-                className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+                className="text-(--color-primary) text-xl rounded-full border-2 border-white bg-(--light-blue) px-6 py-3"
               >
                 View all Project Teams
               </Link>
@@ -228,7 +243,7 @@ export default function LandingPage() {
             <div className="h-1 bg-white/60 m-10"></div>
             {/*big-little */}
             <div className="bg-mx-auto max-w-none flex w-full flex-col items-center gap-10 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 2xl:px-16">
-              <h4 className="text-3xl md:text-4xl underline hover:scale-115 hover:text-white">
+              <h4 className="text-3xl md:text-4xl underline">
                 {" "}
                 <Link href="/programs">Big-Little Program</Link>
               </h4>
@@ -260,7 +275,7 @@ export default function LandingPage() {
               </div>
               <Link
                 href="/biglittle"
-                className="text-(--color-primary) text-md rounded-full border-2 border-white bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+                className="text-(--color-primary) text-xl rounded-full border-2 border-white bg-(--light-blue) px-6 py-3"
               >
                 View all Big-Little Members
               </Link>
@@ -270,7 +285,7 @@ export default function LandingPage() {
         {/* e-board */}
         <section className="w-ful  bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary)  text-(--color-primary) md:py-12 px-5 py-8">
           <div className="mx-auto flex w-full max-w-none flex-col items-center gap-10 px-4 py-10 sm:px-6 lg:px-10 lg:py-14 2xl:px-16">
-            <h3 className="text-3xl md:text-5xl hover:scale-10">
+            <h3 className="text-3xl md:text-5xl">
               <Link href="/eBoard">Meet the E-board</Link>
             </h3>
             <div className="grid grid-cols-2 mx-auto max-w-4xl px-8">
@@ -300,7 +315,7 @@ export default function LandingPage() {
             />
             <Link
               href="/eBoard"
-              className="text-md rounded-full border-2 border-white bg-(--color-primary) text-(--color-secondary) px-6 py-3 transition hover:scale-110"
+              className="text-xl rounded-full border-2 border-white bg-(--color-primary) text-(--color-secondary) px-6 py-3"
             >
               View all E-Board Members
             </Link>
@@ -310,40 +325,42 @@ export default function LandingPage() {
         {/* events */}
         <section className="bg-(--color-primary) w-full md:py-12 px-5">
           <div className="mx-auto flex w-full max-w-none flex-col items-center gap-10 px-4 py-10 sm:px-6 lg:px-10 lg:py-14 2xl:px-16">
-            <h3 className="text-3xl md:text-5xl  text-white hover:scale-105">
+            <h3 className="text-3xl md:text-5xl  text-white">
               <Link href="/events">Events</Link>
             </h3>
-            <ul className="max-w-4xl flex flex-wrap justify-center gap-x-5 gap-y-2 text-center text-2xl text-white md:text-3xl">
-              {[
-                "Professional Development",
-                "Technical Workshops",
-                "community service",
-                "Cultural events",
-                "Networking events",
-                "Office Tour",
-                "BIG-LITTLE MENTORSHIP",
-                "PROJECTS TEAMS",
-                "INTERNS PROGRAM",
-                "Conferences",
-              ].map((eventType, index) => (
-                <li key={`${eventType}-${index}`} className="inline-flex items-center gap-3 before:text-[#84ca44] before:content-['|'] last:after:content-['|'] last:after:text-[#84ca44]">
-                  {eventType}
-                </li>
-              ))}
-            </ul>
+            <motion.ul
+  variants={listVariants}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true, amount: 0.2 }}
+  className="mx-auto grid w-full max-w-6xl grid-cols-2 justify-items-center gap-x-4 gap-y-6 lg:grid-cols-5"
+>
+  {eventTypes.map((eventType, index) => (
+    <motion.li
+      key={eventType}
+      variants={itemVariants}
+      className="flex min-h-24 w-full max-w-56 flex-col items-center justify-center gap-1 border-l-4 border-[#84ca44] px-3 text-center text-white"
+    >
+      <span className="text-sm tracking-widest text-[#84ca44] md:text-base">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span className="text-2xl md:text-3xl">{eventType}</span>
+    </motion.li>
+  ))}
+</motion.ul>
             <div className="flex gap-5 ">
               <Link
                 href="/events"
-                className="text-md rounded-full border-2 bg-(--light-green) px-6 py-3 transition hover:scale-110 hover:border-white"
+                className="text-xl rounded-full border-2 bg-(--light-green) px-6 py-3"
               >
                 view upcoming event
               </Link>
 
               <Link
                 href="https://bullsconnect.usf.edu/SASE/club_signup"
-                className="text-md rounded-full border-2  bg-(--light-blue) px-6 py-3 transition hover:scale-110 hover:border-white"
+                className="text-xl rounded-full border-2  bg-(--light-blue) px-6 py-3"
               >
-                Join our BullsConnect
+                Join BullsConnect
               </Link>
             </div>
           </div>
