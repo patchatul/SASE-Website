@@ -35,7 +35,7 @@ export default function Footer() {
       aria-label="Site footer"
       className="shrink-0 bg-(--color-secondary) px-[clamp(1.5rem,4vw,4rem)] pt-12 pb-8 text-(--color-primary) md:pt-16 md:pb-6"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-12 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-x-16 md:gap-y-0">
+      <div className="mx-auto grid max-w-8xl grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-12 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-x-16 md:gap-y-0">
         {/* brand: smaller logo + text */}
         <div className="flex flex-col items-start gap-1">
           <Image
@@ -46,12 +46,12 @@ export default function Footer() {
             sizes="(min-width: 1024px) 190px, 140px"
             className="mb-3 h-auto w-35 lg:w-47.5"
           />
-          <p className="text-xl md:text-3xl">
+          <h2 className="text-2xl md:text-3xl">
             University of South Florida
-          </p>
-          <p className="text-xl md:text-3xl">
+          </h2>
+          <h3 className="text-2xl md:text-3xl">
             Society of Asian Scientists and Engineers
-          </p>
+          </h3>
         </div>
 
         {/* panda (hover / focus tooltip): right of the brand below md, middle column from md up */}
@@ -120,11 +120,11 @@ export default function Footer() {
       </div>
 
       {/* bottom bar: same on every screen size */}
-      <div className="flex  justify-center border-t-2 pt-5 text-center text-sm md:mt-14 md:text-base">
+      <div className="flex justify-center border-t-2 pt-5 text-center text-sm md:mt-14 md:text-base">
         <p>© 2026 USF SASE. All rights reserved.</p>
         <span className="mx-2">|</span>
         
-        <p>Made by <Link href="/programs" className="hover:text-white hover:underline  ">
+        <p>Made by <Link href="/projects/" className="hover:text-white hover:underline  ">
         Code for Community.</Link></p>
       </div>
     </footer>

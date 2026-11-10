@@ -80,10 +80,10 @@ function EventCard({ event }: { event: Awaited<ReturnType<typeof getSaseEvents>>
         )}
       </div>
       <div className="flex flex-1 flex-col pt-5">
-        <h3 className="mb-3 text-xl font-medium sm:text-2xl">{event.title}</h3>
-        <p className="text-sm sm:text-base"><span className="font-medium">Date:</span> {date}</p>
-        <p className="mt-1 text-sm sm:text-base"><span className="font-medium">Time:</span> {time}</p>
-        <p className="mt-1 text-sm sm:text-base"><span className="font-medium">Location:</span> {event.location || "TBD"}</p>
+        <h3 className="mb-3 text-xl sm:text-2xl">{event.title}</h3>
+        <p className="text-sm sm:text-base"><span>Date:</span> {date}</p>
+        <p className="mt-1 text-sm sm:text-base"><span>Time:</span> {time}</p>
+        <p className="mt-1 text-sm sm:text-base"><span>Location:</span> {event.location || "TBD"}</p>
         <EventCardActions description={event.description} url={event.url} title={event.title} />
       </div>
     </article>

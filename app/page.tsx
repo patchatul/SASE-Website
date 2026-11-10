@@ -8,12 +8,7 @@ export default function Home() {
     <div>
       <main>
         <LandingPage/>
-      </main>
-      
-      <div className="flex w-full flex-col items-center justify-center text-center">
-        
-      </div>
-      
+      </main>      
     </div>
   );
 }
