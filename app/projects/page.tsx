@@ -66,7 +66,7 @@ export default function ProjectTeam() {
                 {team.name}
               </div>
 
-              <div className="bg-[#111133]/90 text-white p-8 rounded-lg w-full md:w-[500px] min-h-48 flex flex-col justify-center shadow-xl border border-white/10">
+              <div className="bg-[#111133]/90 text-white p-8 rounded-lg w-full md:w-125 min-h-48 flex flex-col justify-center shadow-xl border border-white/10">
                 <h3 className="text-2xl font-bold tracking-wider mb-2 uppercase">
                   About {team.name}
                 </h3>

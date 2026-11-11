@@ -3,7 +3,7 @@ import EventCardActions from "@/components/eventCardActions";
 import { getCalendarEvents, getSaseEvents, splitEvents } from "@/lib/events";
 import { connection } from "next/server";
 import { Suspense } from "react";
-import Link from "next/dist/client/link";
+import Link from "next/link";
 
 export default function EventsPage() {
   return <Suspense fallback={<main className="min-h-screen bg-(--color-secondary) p-10 pt-24 text-(--color-primary)">Loading events…</main>}><EventsContent /></Suspense>;
@@ -69,21 +69,21 @@ function EventCard({ event }: { event: Awaited<ReturnType<typeof getSaseEvents>>
   const time = event.allDay ? "All day" : `${formatTime(start)} – ${formatTime(end)}`;
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101b2c] p-5 text-white shadow-[5px_5px_0_0_var(--color-primary)]">
-      <div className="flex aspect-4/3 items-center justify-center overflow-hidden rounded-xl bg-[#0c1420] text-center text-2xl text-white">
+    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101b2c] p-5 font-sans text-white shadow-[5px_5px_0_0_var(--color-primary)]">
+      <div className="flex aspect-4/3 items-center justify-center overflow-hidden rounded-xl bg-[#0c1420] text-center text-sm text-white sm:text-base">
         {event.image ? (
           // BullsConnect hosts event flyers on its own domain.
           // eslint-disable-next-line @next/next/no-img-element
           <img src={event.image} alt={`${event.title} flyer`} className="h-full w-full object-cover" loading="lazy" />
         ) : (
-          <span>visit <Link href="https://www.instagram.com/usfsase/" className="text-[#84ca44] underline">USFSASE Instagram</Link> for flyers</span>
+          <span className="px-4">Visit <Link href="https://www.instagram.com/usfsase/" className="text-[#84ca44] underline">USFSASE Instagram</Link> for flyers</span>
         )}
       </div>
       <div className="flex flex-1 flex-col pt-5">
-        <h3 className="mb-3 text-2xl font-semibold sm:text-3xl">{event.title}</h3>
-        <p className="text-lg"><strong>Date:</strong> {date}</p>
-        <p className="mt-1 text-lg"><strong>Time:</strong> {time}</p>
-        <p className="mt-1 text-lg"><strong>Location:</strong> {event.location || "TBD"}</p>
+        <h3 className="mb-3 text-xl sm:text-2xl">{event.title}</h3>
+        <p className="text-sm sm:text-base"><span>Date:</span> {date}</p>
+        <p className="mt-1 text-sm sm:text-base"><span>Time:</span> {time}</p>
+        <p className="mt-1 text-sm sm:text-base"><span>Location:</span> {event.location || "TBD"}</p>
         <EventCardActions description={event.description} url={event.url} title={event.title} />
       </div>
     </article>
