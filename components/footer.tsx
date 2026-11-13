@@ -3,7 +3,6 @@ import { FaDiscord, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { SiLinktree } from "react-icons/si";
 import SaseLogo from "@/public/sase_logos/navyHorizontal.png";
 import StressfulPanda from "@/public/panda_stickers/stressfulPanda.png";
-import { Float } from "./motionCardRow";
 import Link from "next/link";
 
 const socialLinks = [
@@ -59,14 +58,12 @@ export default function Footer() {
           className="group relative flex flex-col items-center self-center justify-self-end md:justify-self-center"
           tabIndex={0}
         >
-          <Float>
             <Image
               src={StressfulPanda}
               alt="USF SASE Panda Sticker"
               sizes="(min-width: 1024px) 144px, (min-width: 768px) 112px, 96px"
               className="h-auto w-24 md:w-28 lg:w-36"
             />
-          </Float>
           <div
             role="tooltip"
             // right-aligned below md so it can't run off the screen edge, centered from md up

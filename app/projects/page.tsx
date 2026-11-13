@@ -17,11 +17,44 @@ const circleColors = [
   "bg-[#d0e4b4]", // green
   "bg-[#a5aef5]", // lavender
 ];
+type Member = { name: string; img?: string };
 
+// Add img: "/members/filename.jpg" to a member once you have the photo.
+// Files go in your project's public/members/ folder.
+const membersByTeam: Record<number, Member[]> = {
+  1: [ // Code for Community (8)
+    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" }, { name: "Member 4" },
+    { name: "Member 5" }, { name: "Member 6" }, { name: "Member 7" }, { name: "Member 8" },
+  ],
+  2: [ // Robotic Arm Project (6)
+    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
+    { name: "Member 4" }, { name: "Member 5" }, { name: "Member 6" },
+  ],
+  3: [ // Brain Tumor Detection (6)
+    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
+    { name: "Member 4" }, { name: "Member 5" }, { name: "Member 6" },
+  ],
+  4: [ // Delivery Bot (6)
+    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
+    { name: "Member 4" }, { name: "Member 5" }, { name: "Member 6" },
+  ],
+  5: [ // Cancer Screening Device (5)
+    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
+    { name: "Member 4" }, { name: "Member 5" },
+  ],
+  6: [ // Assistive Walking Device (7)
+    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" }, { name: "Member 4" },
+    { name: "Member 5" }, { name: "Member 6" }, { name: "Member 7" },
+  ],
+  7: [ // Solar Water Purification System (4)
+    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" }, { name: "Member 4" },
+  ],
+};
 export default function ProjectTeam() {
   const [selectedTeam, setSelectedTeam] = useState<number | null>(null);
   const team = teams.find((t) => t.id === selectedTeam);
   const teamIndex = teams.findIndex((t) => t.id === selectedTeam);
+  const members = team ? membersByTeam[team.id] ?? [] : [];
 
   return (
     <div
@@ -72,6 +105,25 @@ export default function ProjectTeam() {
                 </h3>
                 <p className="text-gray-200 text-sm">{team.description}</p>
               </div>
+            </div>
+                        {/* Members grid */}
+            <div className="flex flex-wrap justify-center gap-8 w-full max-w-5xl mt-14">
+              {members.map((m, i) => (
+                <div key={i} className="flex flex-col items-center w-32 md:w-40">
+                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden bg-[#d0e4b4] border-2 border-[#1a1a4e] shadow-[6px_6px_0_0_#ffffff] flex items-center justify-center">
+                    {m.img ? (
+                      <img src={m.img} alt={m.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="text-4xl font-bold text-[#1a1a4e]/40">
+                        {m.name.charAt(0)}
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-4 text-[#1a1a4e] font-semibold text-center">
+                    {m.name}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         )}
