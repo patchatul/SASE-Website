@@ -89,7 +89,7 @@ function EventModal({
         </button>
 
         <span className={dateChip}>{event.date}</span>
-        <h2 className="mt-3 pr-10 text-4xl font-semibold md:text-6xl">
+        <h2 className="mt-3 pr-10 text-4xl font-medium md:text-6xl">
           {event.title}
         </h2>
         <div className="my-5 h-1.5 w-20 rounded-full bg-[#84ca44]" />
@@ -197,7 +197,7 @@ export default function NewsletterCards({
               </div>
               <div className="flex flex-1 flex-col gap-3 p-5">
                 <span className={`${dateChip} self-start`}>{event.date}</span>
-                <h2 className="text-3xl font-semibold">{event.title}</h2>
+                <h2 className="text-3xl font-medium">{event.title}</h2>
                 <p className="text-xl text-[#3f4444]">{event.summary}</p>
                 <span className="mt-auto pt-2 text-xl underline decoration-[#84ca44] decoration-4 underline-offset-4">
                   See recap and photos
