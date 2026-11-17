@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer
       aria-label="Site footer"
-      className="shrink-0 bg-(--color-secondary) px-[clamp(1.5rem,4vw,4rem)] pt-12 pb-8 text-(--color-primary) md:pt-16 md:pb-6"
+      className="shrink-0 bg-blue-200 px-[clamp(1.5rem,4vw,4rem)] pt-12 pb-8 text-(--color-primary) md:pt-16 md:pb-6"
     >
       <div className="mx-auto grid max-w-8xl grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-12 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-x-16 md:gap-y-0">
         {/* brand: smaller logo + text */}
