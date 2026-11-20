@@ -6,39 +6,42 @@ import Image from "next/image";
 
 import { eboard, photos, details, type Member } from "@/data/membersInfo";
 
-
 const card = "rounded-2xl border-2 border-[#141b4d] shadow-[4px_4px_0_#141b4d]";
-const button =
-  "inline-block rounded-full border-2 border-[#141b4d] px-6 py-2 text-lg hover:bg-[#bfe0a1]";
+
+// Photos that need to be zoomed in a little (name must match exactly)
+const zoom: Record<string, string> = {
+  "Adhyayan Tiwari": "scale-125",
+  "Ashita Agrawal": "scale-125 origin-bottom",
+};
 
 export default function Eboard() {
   const [selected, setSelected] = useState<Member | null>(null);
 
   return (
-        <main>
+    <main>
       {/* HERO: same light-blue fade as the About page */}
       <section className="bg-linear-to-b from-[#89abe3] to-[#e9e8e8] px-8 pb-20 pt-28 text-center md:px-20">
         <h1 className="text-4xl font-semibold text-[#141b4d] md:text-8xl">
           MEET THE EBOARD
         </h1>
         <div className="mx-auto mt-6 h-2 w-36 rounded-full bg-[#84ca44]" />
-         <p className="text-xl md:text-2xl text-(--color-primary) mt-6 md:mt-10">
-                Our executive board leads USF SASE: planning events, running our
-                programs, and supporting members all year long.
-              </p>
+        <p className="text-xl md:text-2xl text-(--color-primary) mt-6 md:mt-10">
+          Our executive board leads USF SASE: planning events, running our
+          programs, and supporting members all year long.
+        </p>
         <p className="text-sm text-(--color-primary)">
           Click on any polaroid to learn more about each member!
         </p>
       </section>
 
       {/* POLAROIDS */}
-      <section className="mx-auto w-full md:max-w-6xl px-8 pb-28 pt-8 md:px-12">
-        <div className="justify-items-center grid grid-cols-1 gap-x-20 gap-y-28 md:grid-cols-2 lg:grid-cols-3">
+      <section className="mx-auto w-full md:max-w-7xl px-8 pb-28 pt-8 md:px-12">
+        <div className="grid grid-cols-1 justify-items-center gap-x-20 gap-y-28 md:grid-cols-2 lg:grid-cols-3">
           {eboard.map((m, i) => (
             <button
               key={i}
               onClick={() => setSelected(m)}
-              className={`${card}  relative w-full max-w-72 cursor-pointer bg-white p-5 pb-6 text-left transition duration-300 hover:-translate-y-3 hover:rotate-0 ${
+              className={`${card} relative w-full max-w-80 cursor-pointer bg-white p-5 pb-6 text-left transition duration-300 hover:-translate-y-3 hover:rotate-0 ${
                 i % 2 === 0 ? "-rotate-2" : "rotate-2"
               }`}
             >
@@ -53,24 +56,29 @@ export default function Eboard() {
                     alt={m.name}
                     fill
                     sizes="(min-width: 1024px) 400px, 100vw"
-                    className="object-cover object-[50%]"
+                    className={`object-cover object-[50%] ${zoom[m.name] ?? ""}`}
                   />
                 ) : (
                   "[PHOTO]"
                 )}
               </div>
 
-              {/* caption strip */}
+              {/* caption strip: name and role are ALWAYS one line each */}
               <div className="pt-6 text-center">
-                <h3 className="text-4xl font-semibold text-[#141b4d]">{m.name}</h3>
-                <p className="mt-2 text-2xl text-[#3f4444]">{m.role}</p>
+                <h3 className="whitespace-nowrap text-4xl font-semibold text-[#141b4d]">
+                  {m.name}
+                </h3>
+                <p className="mt-2 whitespace-nowrap text-lg text-[#3f4444]">
+                  {m.role}
+                </p>
               </div>
             </button>
           ))}
         </div>
       </section>
 
-            {selected && (
+      {/* POPUP */}
+      {selected && (
         <div
           onClick={() => setSelected(null)}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 md:p-8"
@@ -96,7 +104,7 @@ export default function Eboard() {
                     alt={selected.name}
                     fill
                     sizes="(min-width: 768px) 400px, 100vw"
-                    className="object-cover object-[50%]"
+                    className={`object-cover object-[50%] ${zoom[selected.name] ?? ""}`}
                   />
                 ) : (
                   "[PHOTO]"
@@ -139,6 +147,3 @@ export default function Eboard() {
     </main>
   );
 }
-
-
-
