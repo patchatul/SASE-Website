@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CountUp, PopIn } from "@/components/motionCardRow";
 
 // ---- LINKS ----
 const JOIN_URL = "https://bullsconnect.usf.edu/SASE/club_signup";
@@ -43,99 +44,53 @@ const programs = [
   {
     title: "Big-Little Mentorship",
     text: "Pairs newer members with experienced upperclassmen for academic, professional and personal guidance. It is free, open to anyone, and runs in the Fall.",
-    lead: "Engagement Director",
   },
   {
     title: "Interns Program",
     text: "Interns shadow the eBoard during the Spring semester to learn how the club runs and how to lead.",
-    lead: "Engagement Director",
   },
   {
-    title: "Projects Teams",
+    title: "Project Teams",
     text: "Hands-on technical projects with peers, where members build real skills. Members can apply to join.",
-    lead: "Operations and Technical Projects Directors",
   },
   {
-    title: "Workshops",
-    text: "Technical trainings, resume critiques, interview and elevator-pitch practice, and research workshops.",
-    lead: "Technical Projects Director",
-  },
-  {
-    title: "Professional Events",
-    text: "Industry-based events and panels that connect members with professionals in the field.",
-    lead: "Professional Development Event Director",
+    title: "Workshops & Professional Events",
+    text: "Technical trainings, resume critiques, interview and elevator-pitch practice, and research workshops, plus industry-based events and panels that connect members with professionals in the field.",
   },
   {
     title: "Cultural Events",
     text: "Celebrations of culture and community socials, such as our Lunar New Year festival.",
-    lead: "Cultural Event Director",
   },
   {
     title: "Community Service",
     text: "Volunteer opportunities that let members give back locally and earn service hours.",
-    lead: "Service Chair",
   },
   {
     title: "Conferences",
     text: "SASE national and regional conferences, where members have found internships and job offers.",
-    lead: "Conference and PR Chair",
   },
 ];
 
-// end = number to count up to. text = shown as is (placeholders).
-const stats = [
-  { end: 772, suffix: "+", label: "MEMBERS" },
-  { end: 191, suffix: "+", label: "EVENTS" },
-  { text: "[00]", label: "[SPONSORS]" },
-  { text: "2015", label: "FOUNDED" },
+// Numbers band. href = makes the whole number clickable. plain = no count-up.
+type Stat = { value: string; label: string; href?: string; plain?: boolean };
+
+const stats: Stat[] = [
+  { value: "772+", label: "Members" },
+  { value: "191+", label: "Events", href: "/events" },
+  { value: "2015", label: "Founded", plain: true },
 ];
 
 // ---- SHARED STYLES ----
 const card = "rounded-2xl border-2 border-[#141b4d] shadow-[3px_3px_0_#141b4d]";
 const pad = "px-8 py-12 md:px-20";
-const button =
-  "inline-block rounded-full border-2 border-[#141b4d] px-7 py-3 text-xl transition hover:-translate-y-0.5 hover:bg-[#bfe0a1]";
+// EXACT same classes as the landing page buttons
+const button = "inline-block text-xl rounded-full border-2 bg-(--light-blue) px-6 py-3";
 const body = "text-2xl leading-relaxed tracking-wide";
 const heading = "mb-6 text-4xl font-semibold md:text-5xl";
 
-// ---- COUNT-UP NUMBER: counts from 0 when scrolled into view ----
-function CountUp({ end, suffix = "" }: { end: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [n, setN] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-        const start = performance.now();
-        const duration = 1600;
-        const tick = (now: number) => {
-          const t = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - t, 3);
-          setN(Math.round(eased * end));
-          if (t < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [end]);
-
-  return (
-    <span ref={ref}>
-      {n.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
-
 export default function About() {
   const [active, setActive] = useState(0);
+  const program = programs[active];
 
   return (
     <div className="bg-linear-to-b from-[#cfdcf5] to-[#f3f6fd] text-[#141b4d]">
@@ -155,53 +110,61 @@ export default function About() {
             background.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a
-              href={JOIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${button} bg-[#84ca44]`}
-            >
-              JOIN US
-            </a>
-            <a href="#mission" className={button}>
-              OUR MISSION
-            </a>
+            <Link href={JOIN_URL} className={button}>
+              Join us
+            </Link>
+            <Link href="#mission" className={button}>
+              Our mission
+            </Link>
           </div>
         </div>
-        <div
-          className={`${card} flex aspect-[16/9] items-center justify-center bg-[#d0d0ce] text-xl text-[#3f4444]`}
-        >
-          [HERO PHOTO]
+        <div className={`${card} relative aspect-[2/1] overflow-hidden bg-[#d0d0ce]`}>
+          <Image
+            src="/members/eboard.JPG"
+            alt="The USF SASE eBoard"
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            priority
+            className="object-cover object-[50%_20%]"
+          />
         </div>
       </section>
 
-      {/* WHO WE ARE */}
+      {/* WHO WE ARE: centered next to the photo, like the hero */}
       <section className={`${pad} grid items-center gap-10 md:grid-cols-2`}>
-        <div
-          className={`${card} flex aspect-[16/9] items-center justify-center bg-[#d0d0ce] text-xl text-[#3f4444]`}
-        >
-          [PHOTO - CLUB MEETING]
+        {/* same size as the hero photo; the whole group photo is shown */}
+        <div className={`${card} relative aspect-[2/1] overflow-hidden bg-[#d0d0ce]`}>
+          <Image
+            src="/members.jpg"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="scale-110 object-cover blur-xl"
+          />
+          <Image
+            src="/members.jpg"
+            alt="USF SASE members at a club meeting"
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-contain"
+          />
         </div>
         <div>
           <h2 className={heading}>WHO WE ARE</h2>
-          <p className={`${body} mb-4`}>
-            USF SASE offers programs and initiatives ranging from professional
-            development events and connections to professionals in the field, to
-            leadership positions that build interpersonal skills and industry-sought
-            qualities.
+          <p className="mb-4 text-xl leading-relaxed tracking-wide lg:text-2xl">
+            USF SASE offers professional development events, connections to
+            professionals in the field, and leadership positions that build
+            interpersonal skills and industry-sought qualities.
           </p>
-          <p className={`${body} mb-4`}>
+          <p className="mb-6 text-xl leading-relaxed tracking-wide lg:text-2xl">
             <span className="font-semibold">Where we come from:</span> SASE is a national
             non-profit (501(c)(3)) established in November 2007, with initial support
-            from Procter &amp; Gamble, dedicated to the advancement of Asian heritage
-            scientists and engineers in education and employment.
+            from Procter &amp; Gamble, dedicated to advancing Asian heritage scientists
+            and engineers in education and employment.
           </p>
-          <p className={`${body} mb-7`}>
-            <span className="font-semibold">Our chapter:</span> founded in 2015 at the
-            University of South Florida in Tampa. We welcome students of all backgrounds.
-          </p>
-          <Link href="/eBoard" className={`${button} bg-white`}>
-            MEET THE EBOARD
+          <Link href="/eBoard" className={button}>
+            Meet the eBoard
           </Link>
         </div>
       </section>
@@ -230,7 +193,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* BY THE NUMBERS, with Zuzu peeking over the top */}
+      {/* NUMBERS: same band and animation as the landing page, Zuzu peeking over the top */}
       <div className="relative mt-24">
         <div className="pointer-events-none absolute bottom-full right-6 z-0 translate-y-[50%] md:right-24">
           <Image
@@ -242,27 +205,39 @@ export default function About() {
           />
         </div>
 
-        <section className="relative z-10 bg-[#141b4d] px-8 py-12 text-white md:px-20">
-          <h2 className="mb-8 text-center text-4xl font-semibold md:text-5xl">
-            USF SASE BY THE NUMBERS
+        <section className="relative z-10 bg-(--color-primary) px-4 py-8 md:py-12">
+          <h2 className="mb-6 text-center text-4xl text-white md:mb-8 md:text-5xl">
+            USF SASE
           </h2>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl border-2 border-[#89abe3] p-6 text-center"
-              >
-                <p className="text-6xl text-[#84ca44]">
-                  {"end" in s && s.end !== undefined ? (
-                    <CountUp end={s.end} suffix={s.suffix} />
-                  ) : (
-                    s.text
-                  )}
-                </p>
-                <p className="mt-2 text-2xl tracking-wide">{s.label}</p>
-              </div>
-            ))}
-          </div>
+          <PopIn className="mx-auto w-full max-w-6xl px-4">
+            <div className="grid grid-cols-3 divide-x divide-white/20">
+              {stats.map((s) => {
+                const inner = (
+                  <>
+                    <span className="text-4xl text-white sm:text-5xl md:text-7xl">
+                      {s.plain ? s.value : <CountUp value={s.value} />}
+                    </span>
+                    <span className="text-sm uppercase tracking-widest text-(--color-secondary) sm:text-lg md:text-2xl">
+                      {s.label}
+                    </span>
+                  </>
+                );
+                return s.href ? (
+                  <Link
+                    key={s.label}
+                    href={s.href}
+                    className="flex flex-col items-center gap-1 px-2 transition hover:-translate-y-1"
+                  >
+                    {inner}
+                  </Link>
+                ) : (
+                  <div key={s.label} className="flex flex-col items-center gap-1 px-2">
+                    {inner}
+                  </div>
+                );
+              })}
+            </div>
+          </PopIn>
         </section>
       </div>
 
@@ -273,7 +248,7 @@ export default function About() {
           <ul className="grid gap-x-12 gap-y-5 md:grid-cols-2">
             {benefits.map((b) => (
               <li key={b.title} className="flex items-start gap-3">
-                <span className="mt-3 h-3 w-3 shrink-0 rounded-full bg-[#84ca44]" />
+                <span className="mt-3 h-3 w-3 shrink-0 rounded-full bg-(--color-primary)" />
                 <p className={body}>
                   <span className="font-semibold">{b.title}:</span> {b.text}
                 </p>
@@ -291,22 +266,25 @@ export default function About() {
             <button
               key={p.title}
               onClick={() => setActive(i)}
-              className={`cursor-pointer rounded-full border-2 border-[#141b4d] px-6 py-2 text-xl transition hover:-translate-y-0.5 ${
-                active === i ? "bg-[#84ca44]" : "bg-white hover:bg-[#bfe0a1]"
+              className={`cursor-pointer rounded-full border-2 px-6 py-3 text-xl transition ${
+                active === i
+                  ? "border-white bg-(--color-primary) text-(--color-secondary)"
+                  : "bg-(--light-blue) hover:border-white hover:bg-(--color-primary) hover:text-(--color-secondary)"
               }`}
             >
-              {p.title.toUpperCase()}
+              {p.title}
             </button>
           ))}
         </div>
+
         <div
           key={active}
           style={{ animation: "fadeUp 0.35s ease" }}
           className={`${card} bg-[#e3ebf9] p-6 md:p-8`}
         >
-          <h3 className="mb-3 text-4xl font-semibold">{programs[active].title}</h3>
-          <p className="mb-5 text-2xl leading-relaxed tracking-wide md:text-3xl">
-            {programs[active].text}
+          <h3 className="mb-3 text-4xl font-semibold">{program.title}</h3>
+          <p className="text-2xl leading-relaxed tracking-wide md:text-3xl">
+            {program.text}
           </p>
         </div>
       </section>
@@ -314,14 +292,9 @@ export default function About() {
       {/* JOIN */}
       <section className="px-8 pb-16 pt-6 text-center md:px-20">
         <p className="mb-5 text-3xl tracking-wide md:text-4xl">LET’S BUILD SOMETHING TOGETHER</p>
-        <a
-          href={JOIN_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${button} bg-[#84ca44]`}
-        >
-          JOIN SASE
-        </a>
+        <Link href={JOIN_URL} className={button}>
+          Join SASE
+        </Link>
       </section>
     </div>
   );
