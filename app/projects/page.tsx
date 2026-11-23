@@ -12,44 +12,44 @@ type Member = { name: string; role?: string; img?: string };
 
 // To add a team photo, add  img: "/teams/filename.jpg"  (file goes in public/teams/)
 const teams: Team[] = [
-  { id: 1, name: "Code for Community", category: "Software", description: "Code for Community is a software project that partners with local businesses and communities to build websites that serve their needs. The team is currently building a SASE website to showcase the chapter’s accomplishments and community. The project helps members strengthen their software fundamentals and learn how to think through website design, from getting comfortable with Next.js and Figma to collaborating as a team with Git." },
-  { id: 2, name: "Robotic Arm Project", category: "Hardware", description: "Robot Arm is a hardware project building a bionic arm with a five-fingered hand and a two-axis wrist that mirrors the movements of a sensor glove, plus a gesture-triggered web shooter. Members build skills in mechanical design, electronics, and programming, from SolidWorks CAD and 3D printing to integrating servos, sensors, and an Arduino Mega." },
-  { id: 3, name: "Brain Tumor Detection", category: "Machine Learning", description: "Brain Tumor Detection is a machine learning project that classifies brain tumors from MRI scans, comparing ResNet-18, ResNet-50, and EfficientNet-B0 to find the most reliable model. Members work through the full pipeline, from sourcing and preprocessing MRI data to training in Google Colab, while learning to evaluate data quality and model performance." },
-  { id: 4, name: "Delivery Bot", category: "Robotics", description: "Delivery Bot is a robotics project building a small autonomous robot that delivers items to users who order through a website. The robot runs on a Raspberry Pi 5 with ROS 2, using LiDAR, IMU, SLAM, and Nav2 for mapping and navigation, with testing done first in Gazebo simulation. Members are split across hardware, embedded systems, and software teams, gaining experience across the full robotics stack." },
-  { id: 5, name: "Cancer Screening Device", category: "Biomedical", description: "Cancer Screening Device is a biomedical project building a low-cost paper test strip that flags early warning signs of cancer from a single drop of blood, as simply as a pregnancy test. The strip uses a colloidal gold lateral flow assay that turns a line red when proteins such as CEA, CA 15-3, and CA-125 reach warning levels. Members gain hands-on experience in biomedical research, assay design, and lab testing while learning to build accessible healthcare technology." },
-  { id: 6, name: "Assistive Walking Device", category: "Hardware", description: "Assistive Walking Device is a hardware team project working to build an affordable smart walking stick that helps visually impaired individuals navigate their surroundings with greater confidence and independence. The team is designing a lightweight, portable stick and exploring smart features such as obstacle detection and emergency alerts to make everyday travel safer. Along the way, student members gain hands-on experience in product design, 3D printing, and electronics while learning to build technology around real human needs." },
-  { id: 7, name: "Solar Water Purification System", category: "Engineering", description: "Water Purification is a project building a low-cost gravity filter that turns dirty water into cleaner, usable water through five layers of rock, sand, activated charcoal, and cloth. The team will test tap, lake, and dirt-mixed water while measuring clarity, pH, flow rate, and cost. Members gain hands-on experience in design, prototyping, and experimental testing." },
+  { id: 1, name: "Code for Community", category: "Software", img: "/project_team_members/code_for_community.jpg",description: "Code for Community is a software project that partners with local businesses and communities to build websites that serve their needs. The team is currently building a SASE website to showcase the chapter’s accomplishments and community. The project helps members strengthen their software fundamentals and learn how to think through website design, from getting comfortable with Next.js and Figma to collaborating as a team with Git." },
+  { id: 2, name: "Robotic Arm Project", category: "Hardware", img: "/project_team_members/robotic_arm.jpg",description: "Robot Arm is a hardware project building a bionic arm with a five-fingered hand and a two-axis wrist that mirrors the movements of a sensor glove, plus a gesture-triggered web shooter. Members build skills in mechanical design, electronics, and programming, from SolidWorks CAD and 3D printing to integrating servos, sensors, and an Arduino Mega." },
+  { id: 3, name: "Brain Tumor Detection", category: "Machine Learning", img: "/project_team_members/brain_tumor_detection.jpg", description: "Brain Tumor Detection is a machine learning project that classifies brain tumors from MRI scans, comparing ResNet-18, ResNet-50, and EfficientNet-B0 to find the most reliable model. Members work through the full pipeline, from sourcing and preprocessing MRI data to training in Google Colab, while learning to evaluate data quality and model performance." },
+  { id: 4, name: "Delivery Bot", category: "Robotics", img: "/project_team_members/delivery_bot.jpg", description: "Delivery Bot is a robotics project building a small autonomous robot that delivers items to users who order through a website. The robot runs on a Raspberry Pi 5 with ROS 2, using LiDAR, IMU, SLAM, and Nav2 for mapping and navigation, with testing done first in Gazebo simulation. Members are split across hardware, embedded systems, and software teams, gaining experience across the full robotics stack." },
+  { id: 5, name: "Cancer Screening Device", category: "Biomedical", img: "/project_team_members/cancer_screening_device.jpg", description: "Cancer Screening Device is a biomedical project building a low-cost paper test strip that flags early warning signs of cancer from a single drop of blood, as simply as a pregnancy test. The strip uses a colloidal gold lateral flow assay that turns a line red when proteins such as CEA, CA 15-3, and CA-125 reach warning levels. Members gain hands-on experience in biomedical research, assay design, and lab testing while learning to build accessible healthcare technology." },
+  { id: 6, name: "Assistive Walking Device", category: "Hardware", img: "/project_team_members/assistive_walking_device.jpg", description: "Assistive Walking Device is a hardware team project working to build an affordable smart walking stick that helps visually impaired individuals navigate their surroundings with greater confidence and independence. The team is designing a lightweight, portable stick and exploring smart features such as obstacle detection and emergency alerts to make everyday travel safer. Along the way, student members gain hands-on experience in product design, 3D printing, and electronics while learning to build technology around real human needs." },
+  { id: 7, name: "Solar Water Purification System", category: "Engineering", img: "/project_team_members/water_purification.jpg",description: "Water Purification is a project building a low-cost gravity filter that turns dirty water into cleaner, usable water through five layers of rock, sand, activated charcoal, and cloth. The team will test tap, lake, and dirt-mixed water while measuring clarity, pH, flow rate, and cost. Members gain hands-on experience in design, prototyping, and experimental testing." },
 ];
 
 // To add a member photo, add  img: "/members/filename.jpg"  (file goes in public/members/)
 // You can also add  role: "Team Lead"  to show under the name.
 const membersByTeam: Record<number, Member[]> = {
   1: [ // Code for Community (8)
-    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" }, { name: "Member 4" },
-    { name: "Member 5" }, { name: "Member 6" }, { name: "Member 7" }, { name: "Member 8" },
+    { name: "Patcharaluk Tulyakul", role: "Team Lead", img: "/eboard_pics/pat.jpg"}, { name: "Rithva Menon", img: "/project_team_members/rithva.jpg"}, { name: "Ashita Agrawal", img: "/eboard_pics/ashita.jpg"}, { name: "Elizabeth Nyugen"},
+    { name: "Pavithra Balaji", img: "/project_team_members/pavi.jpg"}, { name: "Le Nyugen Dan" },
   ],
   2: [ // Robotic Arm Project (6)
-    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
-    { name: "Member 4" }, { name: "Member 5" }, { name: "Member 6" },
+    { name: "Alesandra Morales" }, { name: "Khoa Nguyen" }, { name: "Mohid Rasool" },
+    { name: "Liam Badillo" }, { name: "Yash Ramlakhansingh" }, { name: "Logan Martin" },
   ],
   3: [ // Brain Tumor Detection (6)
-    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
-    { name: "Member 4" }, { name: "Member 5" }, { name: "Member 6" },
+    { name: "Lakshmi Prakash" }, { name: "Chasrith Vasireddy" }, { name: "Shraddaya Rai" },
+    { name: "Phong Lien" }, { name: "An Ton Bui" },{ name: "Johnny Tran" },
   ],
   4: [ // Delivery Bot (6)
-    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
-    { name: "Member 4" }, { name: "Member 5" }, { name: "Member 6" },
+    { name: "Akin Henry"}, { name: "Alexander Bruneau", img: "/project_team_members/alex.jpg"}, { name: "Mai Gia Tue Nguyen" },
+    { name: "Christopher Thomas" }, { name: "Yadira Rojas Reynoso" }, { name: "Minh Hoa Vu", img: "/project_team_members/hoa.jpg"},
   ],
   5: [ // Cancer Screening Device (5)
-    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" },
-    { name: "Member 4" }, { name: "Member 5" },
+    { name: "Kanika Kuntal" }, { name: "Shrinad Senthil Kumar" }, { name: "Phuong Vo" },
+    { name: "Joshitha Kalvakunila" }, { name: "Maria Reshetnyak" }, { name: "Khanh Trinh" }, 
   ],
   6: [ // Assistive Walking Device (7)
-    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" }, { name: "Member 4" },
-    { name: "Member 5" }, { name: "Member 6" }, { name: "Member 7" },
+    { name: "Ash Patel" }, { name: "Zainab Taya" }, { name: "Hiep Le", img: "/project_team_members/LeGiaHiep.jpg"}, { name: "Jensen Singnoth" },
+    { name: "Shreekar Saidu" }, { name: "Lillian Duong" }, { name: "Tam Vo" },
   ],
   7: [ // Solar Water Purification System (4)
-    { name: "Member 1" }, { name: "Member 2" }, { name: "Member 3" }, { name: "Member 4" },
+    { name: "Harini Rajesnayagham" }, { name: "Delaine Rajesnayagham" }, { name: "Alisha Imam" }, { name: "Jolene" },
   ],
 };
 
@@ -171,7 +171,7 @@ export default function ProjectTeam() {
     >
       {team && showMembers ? (
         /* VIEW 3: members of the selected team */
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl">
           <button
             onClick={backToAll}
             className="rounded-full border-2 border-[#1a1a4e] bg-white px-6 py-2 text-xl tracking-wide text-[#1a1a4e] transition hover:bg-[#1a1a4e] hover:text-white"
@@ -191,7 +191,7 @@ export default function ProjectTeam() {
         </div>
       ) : (
         /* VIEW 1: polaroid overview of all teams */
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl">
           <SectionHeading title="Meet the Project Teams" subtitle="Click on any polaroid to learn more about each project!" />
 
           <div className="mt-20 flex flex-wrap justify-center gap-x-12 gap-y-16">
@@ -224,7 +224,7 @@ export default function ProjectTeam() {
             <button
               onClick={closeModal}
               aria-label="Close"
-              className="absolute right-4 top-3 z-10 text-3xl leading-none text-[#1a1a4e] hover:opacity-60"
+              className="absolute right-4 top-3 z-10 text-2xl leading-none text-[#1a1a4e] hover:opacity-60"
             >
               ×
             </button>
