@@ -14,9 +14,10 @@ import bullsconnectLogo from "@/public/social_media_logos/bullsconnect.webp";
 
 export default function Contacts() {
   return (
-    <div className="bg-gray-200 w-full h-full flex flex-col items-center justify-center gap-4 p-4 max-w-7xl mx-auto">
+    <div className="bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary)">
+    <div className=" w-full h-full pt-28 flex flex-col items-center justify-center gap-4 p-4 max-w-7xl mx-auto">
       <h1 className="text-(--color-primary) text-5xl font-semibold">Contact Us</h1>
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-4 items-center text-2xl">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-4 items-start text-2xl">
         <div className="bg-blue-200 border-2 border(--color-primary) rounded-xl p-10 m-10 flex flex-col items-left justify-left gap-8 max-w-3xl">
           <h2 className="text-3xl">Email</h2>
           <p className="underline"><a href="mailto:usf@saseconnect.org">usf@saseconnect.org</a></p>
@@ -35,7 +36,7 @@ export default function Contacts() {
           <div>
             <h2 className="text-3xl text-center">Social Media</h2>
           </div>
-          <div className="flex flex-col gap-2  items-center justify-center gap-8 p-5 m-5 ">
+          <div className="flex flex-col items-center justify-center gap-8 p-5 m-5 ">
             <a
               className="linktree-link"
               href="https://linktr.ee/usfsase"
@@ -45,8 +46,8 @@ export default function Contacts() {
               <Image
                 src={linktreeLogo}
                 alt="LinkTree"
-                width={267}
-                height={61}
+                width={200}
+                height={50}
               />
             </a>
             <a
@@ -58,8 +59,8 @@ export default function Contacts() {
               <Image
                 src={linkedinLogo}
                 alt="LinkedIn"
-                width={267}
-                height={61}
+                 width={200}
+                height={50}
               />
             </a>
             <a
@@ -71,8 +72,8 @@ export default function Contacts() {
               <Image
                 src={facebookLogo}
                 alt="Facebook"
-                width={267}
-                height={61}
+                width={200}
+                height={50}
               />
             </a>
             <a
@@ -84,8 +85,8 @@ export default function Contacts() {
               <Image
                 src={instagramLogo}
                 alt="Instagram"
-                width={267}
-                height={61}
+                 width={200}
+                height={50}
               />
             </a>
             <a
@@ -97,8 +98,8 @@ export default function Contacts() {
               <Image
                 src={discordLogo}
                 alt="Discord"
-                width={267}
-                height={61}
+                 width={200}
+                height={50}
               />
             </a>
 
@@ -111,14 +112,15 @@ export default function Contacts() {
               <Image
                 src={bullsconnectLogo}
                 alt="BullsConnect"
-                width={534}
-                height={122}
+                 width={200}
+                height={50}
               />
             </a>
           </div>
         </div>
       </div>
     </div >
+    </div>
   );
 }
 
