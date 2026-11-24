@@ -85,22 +85,24 @@ const card = "rounded-2xl border-2 border-[#141b4d] shadow-[3px_3px_0_#141b4d]";
 const pad = "px-8 py-12 md:px-20";
 // EXACT same classes as the landing page buttons
 const button = "inline-block text-xl rounded-full border-2 bg-(--light-blue) px-6 py-3";
-const body = "text-2xl leading-relaxed tracking-wide";
-const heading = "mb-6 text-4xl font-semibold md:text-5xl";
+const body = "text-xl md:text-2xl";
+const heading = "mb-6 text-3xl md:text-5xl";
 
 export default function About() {
   const [active, setActive] = useState(0);
   const program = programs[active];
 
   return (
-    <div className="bg-linear-to-b from-[#cfdcf5] to-[#f3f6fd] text-[#141b4d]">
+    <div className="w-full bg-linear-to-b from-(--color-secondary) via-white to-(--color-secondary) text-(--color-primary)">
+      <div className="mx-auto w-full max-w-7xl">
       <style>{`@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }`}</style>
 
       {/* HERO */}
       <section className={`${pad} grid items-center gap-10 pt-24 md:grid-cols-2`}>
         <div>
-          <p className="mb-2 text-xl tracking-widest text-[#3f4444]">ABOUT THE CLUB</p>
-          <h1 className="mb-5 text-5xl font-semibold md:text-7xl">
+          <p className={`${body} pb-3`}>
+          About us</p>
+          <h1 className="mb-5 text-4xl  md:text-5xl">
             Asian heritage scientists and engineers, growing together at USF
           </h1>
           <p className={`${body} mb-7`}>
@@ -118,7 +120,7 @@ export default function About() {
             </Link>
           </div>
         </div>
-        <div className={`${card} relative aspect-[2/1] overflow-hidden bg-[#d0d0ce]`}>
+        <div className={`${card} relative aspect-2/1 overflow-hidden bg-[#d0d0ce]`}>
           <Image
             src="/members/eboard.JPG"
             alt="The USF SASE eBoard"
@@ -133,7 +135,7 @@ export default function About() {
       {/* WHO WE ARE: centered next to the photo, like the hero */}
       <section className={`${pad} grid items-center gap-10 md:grid-cols-2`}>
         {/* same size as the hero photo; the whole group photo is shown */}
-        <div className={`${card} relative aspect-[2/1] overflow-hidden bg-[#d0d0ce]`}>
+        <div className={`${card} relative aspect-2/1 overflow-hidden bg-[#d0d0ce]`}>
           <Image
             src="/members.jpg"
             alt=""
@@ -152,12 +154,12 @@ export default function About() {
         </div>
         <div>
           <h2 className={heading}>WHO WE ARE</h2>
-          <p className="mb-4 text-xl leading-relaxed tracking-wide lg:text-2xl">
+          <p className="mb-4 text-xl lg:text-2xl">
             USF SASE offers professional development events, connections to
             professionals in the field, and leadership positions that build
             interpersonal skills and industry-sought qualities.
           </p>
-          <p className="mb-6 text-xl leading-relaxed tracking-wide lg:text-2xl">
+          <p className="mb-6 text-xl   lg:text-2xl">
             <span className="font-semibold">Where we come from:</span> SASE is a national
             non-profit (501(c)(3)) established in November 2007, with initial support
             from Procter &amp; Gamble, dedicated to advancing Asian heritage scientists
@@ -170,13 +172,18 @@ export default function About() {
       </section>
 
       {/* MISSION */}
-      <section id="mission" className="scroll-mt-16 bg-[#89abe3] px-8 py-12 text-center md:px-20">
-        <h2 className="mb-4 text-4xl font-semibold md:text-5xl">OUR MISSION</h2>
-        <p className="mx-auto max-w-4xl text-2xl leading-relaxed tracking-wide md:text-3xl">
-          To help Asian heritage scientists and engineers reach their full potential in
-          the global work force, to promote diversity on campus and in the workplace,
-          and to provide community service.
-        </p>
+      <section
+        id="mission"
+        className="relative left-1/2 w-screen -translate-x-1/2 scroll-mt-16 bg-[#89abe3] px-8 py-12 text-center md:px-20"
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <h2 className="mb-4 text-3xl  md:text-5xl">OUR MISSION</h2>
+          <p className="mx-auto max-w-4xl text-xl   md:text-2xl">
+            To help Asian heritage scientists and engineers reach their full potential in
+            the global work force, to promote diversity on campus and in the workplace,
+            and to provide community service.
+          </p>
+        </div>
       </section>
 
       {/* GOALS */}
@@ -186,7 +193,7 @@ export default function About() {
           {goals.map((g) => (
             <div key={g.num} className={`${card} ${g.bg} p-6`}>
               <p className="text-2xl text-[#3f4444]">{g.num}</p>
-              <h3 className="mb-2 text-3xl font-semibold">{g.title}</h3>
+              <h3 className="mb-2 text-3xl">{g.title}</h3>
               <p className={body}>{g.text}</p>
             </div>
           ))}
@@ -199,45 +206,47 @@ export default function About() {
           <Image
             src="/panda_stickers/pandaSitting.png"
             alt="Zuzu the panda"
-            width={500}
-            height={500}
-            className="h-auto w-44 md:w-72"
+            width={400}
+            height={400}
+            className="h-auto w-44 md:w-60"
           />
         </div>
 
-        <section className="relative z-10 bg-(--color-primary) px-4 py-8 md:py-12">
-          <h2 className="mb-6 text-center text-4xl text-white md:mb-8 md:text-5xl">
-            USF SASE
-          </h2>
-          <PopIn className="mx-auto w-full max-w-6xl px-4">
-            <div className="grid grid-cols-3 divide-x divide-white/20">
-              {stats.map((s) => {
-                const inner = (
-                  <>
-                    <span className="text-4xl text-white sm:text-5xl md:text-7xl">
-                      {s.plain ? s.value : <CountUp value={s.value} />}
-                    </span>
-                    <span className="text-sm uppercase tracking-widest text-(--color-secondary) sm:text-lg md:text-2xl">
-                      {s.label}
-                    </span>
-                  </>
-                );
-                return s.href ? (
-                  <Link
-                    key={s.label}
-                    href={s.href}
-                    className="flex flex-col items-center gap-1 px-2 transition hover:-translate-y-1"
-                  >
-                    {inner}
-                  </Link>
-                ) : (
-                  <div key={s.label} className="flex flex-col items-center gap-1 px-2">
-                    {inner}
-                  </div>
-                );
-              })}
-            </div>
-          </PopIn>
+        <section className="relative left-1/2 z-10 w-screen -translate-x-1/2 bg-(--color-primary) px-4 py-8 md:py-12">
+          <div className="mx-auto w-full max-w-7xl">
+            <h2 className="mb-6 text-center text-4xl text-white md:mb-8 md:text-5xl">
+              USF SASE
+            </h2>
+            <PopIn className="mx-auto w-full max-w-7xl px-4">
+              <div className="grid grid-cols-3 divide-x divide-white/20">
+                {stats.map((s) => {
+                  const inner = (
+                    <>
+                      <span className="text-4xl text-white md:text-6xl">
+                        {s.plain ? s.value : <CountUp value={s.value} />}
+                      </span>
+                      <span className="text-sm  text-(--color-secondary) sm:text-lg md:text-2xl">
+                        {s.label}
+                      </span>
+                    </>
+                  );
+                  return s.href ? (
+                    <Link
+                      key={s.label}
+                      href={s.href}
+                      className="flex flex-col items-center gap-1 px-2 transition hover:-translate-y-1"
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div key={s.label} className="flex flex-col items-center gap-1 px-2">
+                      {inner}
+                    </div>
+                  );
+                })}
+              </div>
+            </PopIn>
+          </div>
         </section>
       </div>
 
@@ -245,11 +254,11 @@ export default function About() {
       <section className={pad}>
         <h2 className={heading}>WHAT MEMBERS GET</h2>
         <div className={`${card} bg-white p-6 md:p-8`}>
-          <ul className="grid gap-x-12 gap-y-5 md:grid-cols-2">
+          <ul className="grid  text-lg md:text-xl gap-x-12 gap-y-5 md:grid-cols-2">
             {benefits.map((b) => (
               <li key={b.title} className="flex items-start gap-3">
                 <span className="mt-3 h-3 w-3 shrink-0 rounded-full bg-(--color-primary)" />
-                <p className={body}>
+                <p>
                   <span className="font-semibold">{b.title}:</span> {b.text}
                 </p>
               </li>
@@ -266,7 +275,7 @@ export default function About() {
             <button
               key={p.title}
               onClick={() => setActive(i)}
-              className={`cursor-pointer rounded-full border-2 px-6 py-3 text-xl transition ${
+              className={`cursor-pointer rounded-full border-2 px-6 py-3 text-lg md:text-xl transition ${
                 active === i
                   ? "border-white bg-(--color-primary) text-(--color-secondary)"
                   : "bg-(--light-blue) hover:border-white hover:bg-(--color-primary) hover:text-(--color-secondary)"
@@ -282,8 +291,8 @@ export default function About() {
           style={{ animation: "fadeUp 0.35s ease" }}
           className={`${card} bg-[#e3ebf9] p-6 md:p-8`}
         >
-          <h3 className="mb-3 text-4xl font-semibold">{program.title}</h3>
-          <p className="text-2xl leading-relaxed tracking-wide md:text-3xl">
+          <h3 className="mb-3 text-3xl">{program.title}</h3>
+          <p className="text-lg  md:text-2xl">
             {program.text}
           </p>
         </div>
@@ -291,11 +300,12 @@ export default function About() {
 
       {/* JOIN */}
       <section className="px-8 pb-16 pt-6 text-center md:px-20">
-        <p className="mb-5 text-3xl tracking-wide md:text-4xl">LET’S BUILD SOMETHING TOGETHER</p>
+        <h3 className="mb-5 text-5xl">LET’S BUILD SOMETHING TOGETHER</h3>
         <Link href={JOIN_URL} className={button}>
           Join SASE
         </Link>
       </section>
+      </div>
     </div>
   );
 }
