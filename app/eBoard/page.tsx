@@ -89,7 +89,7 @@ export default function Eboard() {
 
             <div className="grid gap-8 md:grid-cols-[2fr_3fr] md:gap-12">
               {/* LEFT: photo */}
-              <div className="relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-xl bg-[#d0d0ce] text-lg text-[#3f4444]">
+              <div className="relative flex aspect-4/5 w-full items-center justify-center overflow-hidden rounded-xl bg-[#d0d0ce] text-lg text-[#3f4444]">
                 {photos[selected.name] ? (
                   <Image
                     src={photos[selected.name]}

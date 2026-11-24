@@ -56,10 +56,10 @@ export default function EventsCalendar({ events }: { events: CalendarEvent[] }) 
           <button type="button" onClick={() => changeMonth(1)} aria-label="Next month" className="rounded-full border border-white px-4 py-1 hover:bg-white/20">→</button>
         </div>
       </div>
-      <div className="grid grid-cols-7 border-b border-(--color-primary)/20 bg-(--light-blue) text-center text-xs font-semibold uppercase sm:text-sm">
+      <div className="grid grid-cols-7 border-b border-(--color-primary) bg-(--light-blue) text-center text-xs font-semibold uppercase sm:text-sm">
         {weekdays.map((day) => <div key={day} className="p-2 sm:p-3">{day}</div>)}
       </div>
-      <div className="grid grid-cols-7 gap-px bg-(--color-primary)/15">
+      <div className="grid grid-cols-7 gap-px bg-(--color-primary)">
         {Array.from({ length: cellCount }, (_, index) => {
           const date = new Date(month.getFullYear(), month.getMonth(), index - firstDay + 1);
           const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;

@@ -182,7 +182,7 @@ export default function NewsletterCards({
               onClick={() => setSelected(event)}
               className={`${card} flex cursor-pointer flex-col overflow-hidden bg-white text-left transition hover:-translate-y-2 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#84ca44]`}
             >
-              <div className="relative aspect-[4/3] w-full border-b-2 border-[#141b4d]">
+              <div className="relative aspect-4/3 w-full border-b-2 border-[#141b4d]">
                 {cover ? (
                   <Image
                     src={cover}

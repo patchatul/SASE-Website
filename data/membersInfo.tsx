@@ -5,8 +5,6 @@ export const memberImages = [
   {src:"/members/eboard.jpg", alt: "SASE USF E-board" },
   {src:"/members/eboard1.jpg", alt: "SASE USF E-board" },
   { src: "/members/workshop.jpeg", alt: "SASE USF Workshop" },
-  { src: "/members/big_little1.jpeg", alt: "SASE USF Big Little event" },
-  { src: "/members/big_little.jpeg", alt: "SASE USF Big Little event" },
   { src: "/members/karaoke.jpeg", alt: "SASE USF Karaoke event" },
   { src: "/members/project_team1.jpeg", alt: "SASE USF Project team" },
   { src: "/members/project_team.jpeg", alt: "SASE USF Project team" },
