@@ -148,7 +148,7 @@ function PolaroidCard({
         {/* caption strip */}
         <div className="flex flex-1 flex-col items-center pt-3 text-center">
           <span
-            className="inline-block rounded-full px-2 py-1 text-xs"
+            className="inline-block rounded-full px-2 py-1 text-sm"
             style={{
               color: member.role === "Big" ? "#FFFFFF" : "#141B4D",
               backgroundColor:
@@ -157,7 +157,7 @@ function PolaroidCard({
           >
             {member.role} · {family.name}
           </span>
-          <h4 className="mt-2 text-xl font-semibold text-[#141b4d]">
+          <h4 className="mt-2 text-2xl  text-(--color-primary)">
             {member.name}
           </h4>
           <p className="mt-1 text-base text-[#3f4444]">{member.major}</p>
@@ -167,7 +167,7 @@ function PolaroidCard({
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel="noopener noreferrer"
-              className="mt-2 text-sm text-[#141b4d] underline underline-offset-2 hover:opacity-70"
+              className="mt-2 text-md text-(--color-primary) underline underline-offset-2 hover:opacity-70"
             >
               {href.startsWith("mailto:") ? "Email" : "LinkedIn"}
             </a>
@@ -187,11 +187,11 @@ export default function BigLittle() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-5">
           <header className="mb-10">
-            <h2 className="text-4xl sm:text-5xl">BIG–LITTLE PROGRAM</h2>
-            <p className="text-lg ">
+            <h2 className="text-4xl md:text-5xl">BIG–LITTLE PROGRAM</h2>
+            <p className="text-2xl">
               Building connections, one friendship at a time.
             </p>
-            <p className="max-w-4xl text-base text-gray-600">
+            <p className="max-w-4xl text-xl text-gray-600">
               The SASE Big–Little Program pairs members to encourage friendship,
               mentorship, and a strong sense of community at USF. Bigs help
               Littles navigate campus life, share their experiences, and feel
@@ -199,11 +199,15 @@ export default function BigLittle() {
             </p>
           </header>
 
-          <div className="mb-12 flex flex-col items-center rotate-2 justify-center rounded-2xl bg-(--color-primary) px-6 md:max-w-md md:px-10 w-auto">
+          <div className="relative mb-12 flex w-auto rotate-6 flex-col items-center justify-center rounded-2xl px-6 md:max-w-md md:px-10">
+            <div
+              className="absolute -top-3 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rotate-8 opacity-80"
+              style={{ backgroundColor: "#668CB9" }}
+            />
             <Image
               src={biglit}
               alt="SASE Big–Little Family Photo"
-              className="object-cover"
+              className="object-cover max-w-100"
             />
           </div>
         </div>
@@ -234,7 +238,7 @@ export default function BigLittle() {
                   <span className="text-3xl text-(--color-secondary)">{number}</span>
                   <h4 className="text-3xl">{title}</h4>
                 </div>
-                <p className="mt-2 text-md">
+                <p className="mt-2 text-xl">
                   {description}
                 </p>
               </div>
@@ -246,7 +250,7 @@ export default function BigLittle() {
           <h3 className="text-4xl text-[#141B4D]">
             MEET OUR BIG–LITTLE FAMILIES
           </h3>
-          <p className="mt-1 text-sm  text-gray-600">
+          <p className="mt-1 md:text-xl text-lg text-gray-600">
             Four element families · Bigs & Littles · {total} members
           </p>
           <nav
@@ -257,7 +261,7 @@ export default function BigLittle() {
               <a
                 key={family.name}
                 href={`#big-little-${family.name.toLowerCase()}`}
-                className="rounded-lg border border-[#141B4D] bg-white px-5 py-2 transition-colors hover:bg-(--color-primary) hover:text-white"
+                className="rounded-lg border border-(--color-primary) bg-white px-5 py-2 transition-colors hover:bg-(--color-primary) hover:text-white"
               >
                 {family.name}
               </a>
@@ -289,7 +293,7 @@ export default function BigLittle() {
                       {family.name.toUpperCase()} FAMILY
                     </h4>
                   </div>
-                  <p className="mt-2 text-sm  text-gray-600">
+                  <p className="mt-2 text-xl  text-gray-600">
                     {family.members.length} members · {bigCount} Bigs ·{" "}
                     {family.members.length - bigCount} Littles
                   </p>
