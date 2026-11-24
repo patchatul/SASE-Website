@@ -29,7 +29,7 @@ export default function Eboard() {
           Our executive board leads USF SASE: planning events, running our
           programs, and supporting members all year long.
         </p>
-        <p className="text-sm text-(--color-primary)">
+        <p className="text-md text-gray-600 mt-2">
           Click on any polaroid to learn more about each member!
         </p>
       </section>
