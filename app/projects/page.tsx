@@ -97,7 +97,7 @@ const membersByTeam: Record<number, Member[]> = {
   ],
   2: [
     // Robotic Arm Project (6)
-    { name: "Alesandra Morales" },
+    { name: "Alesandra Morales", img: "/project_team_members/alesandra.jpg" },
     { name: "Khoa Nguyen" },
     { name: "Mohid Rasool" },
     { name: "Liam Badillo" },
@@ -106,16 +106,16 @@ const membersByTeam: Record<number, Member[]> = {
   ],
   3: [
     // Brain Tumor Detection (6)
-    { name: "Lakshmi Prakash" },
+    { name: "Lakshmi Prakash", img: "/project_team_members/Lakshmi.jpeg" },
     { name: "Chasrith Vasireddy" },
     { name: "Shraddaya Rai" },
-    { name: "Phong Lien" },
-    { name: "An Ton Bui" },
+    { name: "Phong Lien", img: "/project_team_members/Phong_Lien.jpg" },
+    { name: "An Ton Bui", img: "/project_team_members/antonbui.png" },
     { name: "Johnny Tran" },
   ],
   4: [
     // Delivery Bot (6)
-    { name: "Akin Henry" },
+    { name: "Akin Henry", img: "/project_team_members/Akin.jpg" },
     { name: "Alexander Bruneau", img: "/project_team_members/alex.jpg" },
     { name: "Mai Gia Tue Nguyen" },
     { name: "Christopher Thomas" },
@@ -124,18 +124,18 @@ const membersByTeam: Record<number, Member[]> = {
   ],
   5: [
     // Cancer Screening Device (5)
-    { name: "Kanika Kuntal" },
-    { name: "Shrinad Senthil Kumar" },
+    { name: "Kanika Kuntal", img: "/project_team_members/Kanika.jpg" },
+    { name: "Shrinad Senthil Kumar", img: "/project_team_members/Shrinand.jpeg" },
     { name: "Phuong Vo" },
-    { name: "Joshitha Kalvakunila" },
-    { name: "Maria Reshetnyak" },
-    { name: "Khanh Trinh" },
+    { name: "Joshitha Kalvakunila", img: "/project_team_members/Joshita.jpg" },
+    { name: "Maria Reshetnyak", img: "/project_team_members/Maria.jpeg"},
+    { name: "Khanh Trinh", img: "/project_team_members/Khanh_Trinh.jpg" },
   ],
   6: [
     // Assistive Walking Device (7)
-    { name: "Ash Patel" },
-    { name: "Zainab Taya" },
-    { name: "Hiep Le", img: "/project_team_members/LeGiaHiep.jpg" },
+    { name: "Ash Patel", img: "/project_team_members/Aashna.jpg" },
+    { name: "Zainab Taya", img: "/project_team_members/zainab.jpg" },
+    { name: "Hiep Le", img: "/project_team_members/LeGiaHiep.jpeg" },
     { name: "Jensen Singnoth" },
     { name: "Shreekar Saidu" },
     { name: "Lillian Duong" },
@@ -143,7 +143,7 @@ const membersByTeam: Record<number, Member[]> = {
   ],
   7: [
     // Solar Water Purification System (4)
-    { name: "Harini Rajesnayagham" },
+    { name: "Harini Rajesnayagham"},
     { name: "Delaine Rajesnayagham" },
     { name: "Alisha Imam" },
     { name: "Jolene" },
