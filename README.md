@@ -4,16 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ### Events calendar
 
-The Events page reads the public SASE BullsConnect ICS feed and refreshes it every 15 minutes. Event cards use that feed for titles, dates, descriptions, and links. When a public event page exposes an `og:image`, its flyer appears on the card; otherwise the card displays `No flyer yet! cry`.
-
-To use the Google Calendar API for the month calendar, subscribe a **public** Google calendar to the SASE ICS feed, enable the Google Calendar API in Google Cloud, and set these server-side variables in `.env.local` or your deployment environment:
-
-```text
-GOOGLE_CALENDAR_ID=your_public_calendar_id
-GOOGLE_CALENDAR_API_KEY=your_api_key
-```
-
-Restart the dev server after setting them. Without these values, the month calendar uses the same live ICS data as the cards. Keep the API key server-side and restrict it to the Google Calendar API.
+The Events page reads the public SASE BullsConnect ICS feed with a 24-hour cache lifetime. Event cards use that feed for titles, dates, descriptions, and links. Flyer URLs come from BullsConnect's public event data and are cached for one hour; when an event has no flyer, the card displays the Instagram fallback.
 
 First, run the development server:
 
@@ -51,15 +42,78 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 File Structure
 ```
 └── 📁sase-website
+    └── 📁.claude
+        ├── settings.local.json
     └── 📁app
+        └── 📁.vscode
+            ├── launch.json
+        └── 📁about
+            ├── page.tsx
+        └── 📁biglittle
+            ├── page.tsx
         └── 📁contacts
             ├── page.tsx
         └── 📁eBoard
             ├── page.tsx
+        └── 📁events
+            ├── page.tsx
+        └── 📁newsletter
+            ├── page.tsx
+        └── 📁projects
+            ├── page.tsx
         ├── globals.css
         ├── layout.tsx
         ├── page.tsx
+    └── 📁components
+        ├── cards.tsx
+        ├── eventCardActions.tsx
+        ├── eventsCalendar.tsx
+        ├── footer.tsx
+        ├── landingPage.tsx
+        ├── menubar.tsx
+        ├── motionCardRow.tsx
+        ├── newsletterCards.tsx
+    └── 📁data
+        ├── membersInfo.tsx
+        ├── newsletter.json
+    └── 📁lib
+        ├── events.ts
     └── 📁public
+        └── 📁big_lit_pics
+            ├── big_lit.png
+        └── 📁blog_pics
+            
+        └── 📁eboard_pics
+           
+        └── 📁members
+            ├── eboard.JPG
+            ├── eboard1.JPG
+            ├── karaoke.jpeg
+            ├── project_team.jpeg
+            ├── project_team1.jpeg
+            ├── workshop.jpeg
+        └── 📁panda_stickers
+            ├── air.png
+            ├── earth.png
+            ├── fire.png
+            ├── pandaEE.png
+            ├── pandaSitting.png
+            ├── stressfulPanda.png
+            ├── water.png
+        └── 📁project_team_members
+           
+        └── 📁sase_logos
+            ├── mixedHorizontal.png
+            ├── mixedStack.png
+            ├── mixedWhiteHorizontal.png
+            ├── mixedWhiteStack.png
+            ├── navyHorizontal.png
+            ├── navyStack.png
+            ├── whiteHorizontal.png
+            ├── whiteStack.png
+        ├── bullsconnect.webp
+        ├── members.jpg
+    ├── .env.local
     ├── .gitignore
     ├── AGENTS.md
     ├── eslint.config.mjs

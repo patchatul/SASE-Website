@@ -96,12 +96,25 @@ function parseFeed(ics: string): SaseEvent[] {
 async function getFlyer(url: string): Promise<string | null> {
   if (!url || url === EVENT_URL) return null;
   try {
-    const response = await fetch(url, { next: { revalidate: 3600 }, signal: AbortSignal.timeout(8000) });
+    const eventId = new URL(url).searchParams.get("id");
+    if (!eventId || !/^\d+$/.test(eventId)) return null;
+
+    const response = await fetch("https://bullsconnect.usf.edu/api/v2/graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: "query Event($id: ID!) { event(id: $id) { flyer { url } } }",
+        variables: { id: Buffer.from(`usf:Event:${eventId}`).toString("base64") },
+      }),
+      cache: "force-cache",
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(8000),
+    });
     if (!response.ok) return null;
-    const html = await response.text();
-    const meta = html.match(/<meta\s+[^>]*property=["']og:image["'][^>]*>/i)?.[0];
-    const raw = meta?.match(/content=["']([^"']+)["']/i)?.[1];
-    return safeUrl(raw?.replace(/&amp;/g, "&")) || null;
+    const result = (await response.json()) as {
+      data?: { event?: { flyer?: { url?: string } | null } | null };
+    };
+    return safeUrl(result.data?.event?.flyer?.url) || null;
   } catch {
     return null;
   }
@@ -109,7 +122,7 @@ async function getFlyer(url: string): Promise<string | null> {
 
 export async function getSaseEvents(): Promise<SaseEvent[]> {
   try {
-    const response = await fetch(FEED_URL, { next: { revalidate: 900 }, signal: AbortSignal.timeout(10000) });
+    const response = await fetch(FEED_URL, { next: { revalidate: 86400 }, signal: AbortSignal.timeout(10000) });
     if (!response.ok) throw new Error(`ICS request failed: ${response.status}`);
     const events = parseFeed(await response.text());
     const flyers = await Promise.all(events.map((event) => getFlyer(event.url)));

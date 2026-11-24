@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import type { ReactNode } from "react";
-import MotionCardRow, { PopIn } from "@/components/motionCardRow";
- 
+import MotionCardRow from "@/components/motionCardRow";
+
 /* ============================================================
    Types
    ============================================================ */
 export type InfoItem = { title: string; text: string };
- 
+
 export type CardItem = {
   /** big title: team name, person name, program name... */
   name: string;
@@ -17,7 +17,7 @@ export type CardItem = {
   /** path in /public, e.g. "/eboard/president.jpeg". Leave out for a placeholder. */
   image?: string;
 };
- 
+
 /* ============================================================
    Shared colors
    ============================================================ */
@@ -26,7 +26,7 @@ const tones = [
   { box: "bg-[#c9e7b0]", num: "text-[#84ca44]" },
   { box: "bg-[#9faffc]", num: "text-[#6a6efc]" },
 ];
- 
+
 /* ============================================================
    InfoCard: numbered text box (mission / what we offer)
    ============================================================ */
@@ -48,7 +48,7 @@ export function InfoCard({
     </div>
   );
 }
- 
+
 /* ============================================================
    CardBox: picture on top, name + info at the bottom
    ============================================================ */
@@ -57,7 +57,7 @@ const outlines = {
   light: "border-white shadow-[5px_5px_0_0_white]",
   dark: "border-(--color-primary) shadow-[5px_5px_0_0_var(--color-primary)]",
 };
- 
+
 export function CardBox({
   index,
   name,
@@ -95,7 +95,7 @@ export function CardBox({
           </div>
         )}
       </div>
- 
+
       <div className="flex flex-1 flex-col p-3">
         <h4 className="text-2xl">
           {showNumber && <span className={tone.num}>{index + 1} </span>}
@@ -111,94 +111,120 @@ export function CardBox({
     </div>
   );
 }
- 
+
 /* ============================================================
-   CardList: lays cards out as a normal grid OR the motion carousel
+   CardList: always ONE row.
+   - phone (below md): 1 card at a time, motion carousel (any card count)
+   - laptop, <= scrollAbove cards: all cards in one static row
+   - laptop, >  scrollAbove cards: one row, `columns` visible at a time,
+     auto-scroll + next/prev buttons, pauses on hover
    ============================================================ */
-// Tailwind needs full class names, so list them out
-const lgCols: Record<number, string> = {
-  1: "lg:grid-cols-1",
-  2: "lg:grid-cols-2",
-  3: "lg:grid-cols-3",
-  4: "lg:grid-cols-4",
-  5: "lg:grid-cols-5",
-  6: "lg:grid-cols-6",
-};
- 
 type CardListProps<T> = {
   items: T[];
   getKey: (item: T, index: number) => string;
   renderItem: (item: T, index: number) => ReactNode;
-  /** "grid" = normal responsive grid, "carousel" = auto-scrolling MotionCardRow */
+  /** "carousel" forces the laptop carousel even for few cards */
   mode?: "grid" | "carousel";
-  /** cards per row on laptop (default: number of items, max 6) */
+  /** laptop: with MORE cards than this it becomes the carousel (default 3).
+      Set higher to keep more cards in a static row. */
+  scrollAbove?: number;
+  /** MAX cards per row on laptop (default 4 for carousel, item count otherwise, max 6).
+      Fewer are shown automatically when the row is narrow, e.g. columns={3}. */
   columns?: number;
-  /** carousel only: below this width (px) it is the carousel. 768 phone, 1024 tablet, 99999 always */
+  /** smallest card width in px on laptop, decides how many fit (default 280) */
+  minCardWidth?: number;
+  /** below this width (px) it is always the 1-card carousel (default 768 = md) */
   carouselBelow?: number;
-  /** carousel only: ms between auto-advances */
+  /** ms between auto-advances */
   interval?: number;
+  /** true = stop autoscroll when the OS "reduce motion" setting is on (default false) */
+  respectReducedMotion?: boolean;
   /** extra classes, e.g. "max-w-6xl" so a few cards don't stretch too wide */
   className?: string;
 };
- 
+
 export function CardList<T>({
   items,
   getKey,
   renderItem,
   mode = "grid",
   columns,
-  carouselBelow = 1024,
+  minCardWidth,
+  carouselBelow = 768,
   interval,
+  respectReducedMotion,
+  scrollAbove = 3,
   className = "",
 }: CardListProps<T>) {
-  const cols = Math.max(1, Math.min(columns ?? items.length, 6));
- 
+  const threshold = mode === "carousel" ? 0 : scrollAbove;
+  const scrolls = items.length > threshold;
+  const cols = Math.max(
+    1,
+    Math.min(columns ?? (scrolls ? 4 : items.length), 6),
+  );
   return (
     <div className={`mx-auto w-full ${className}`}>
-      {mode === "carousel" ? (
-        <MotionCardRow
-          items={items}
-          getKey={getKey}
-          renderItem={renderItem}
-          columns={cols}
-          carouselBelow={carouselBelow}
-          interval={interval}
-        />
-      ) : (
-        <CardGrid
-          items={items}
-          getKey={getKey}
-          renderItem={renderItem}
-          columns={cols}
-        />
-      )}
+      <MotionCardRow
+        items={items}
+        getKey={getKey}
+        renderItem={renderItem}
+        columns={cols}
+        minCardWidth={minCardWidth}
+        carouselBelow={carouselBelow}
+        scrollAbove={threshold}
+        interval={interval}
+        respectReducedMotion={respectReducedMotion}
+      />
     </div>
   );
 }
- 
-/** Normal grid: 1 column on phone, 2 on small screens, `columns` on laptop. */
-export function CardGrid<T>({
-  items,
-  getKey,
-  renderItem,
-  columns,
+import type { Member } from "@/data/membersInfo";
+
+/* PolaroidCard: the tilted polaroid from the E-Board page.
+   Use inside CardList so it scrolls like the other card rows. */
+export default function PolaroidCard({
+  member,
+  photo,
+  index,
 }: {
-  items: T[];
-  getKey: (item: T, index: number) => string;
-  renderItem: (item: T, index: number) => ReactNode;
-  columns: number;
+  member: Member;
+  photo?: string;
+  index: number;
 }) {
   return (
-    <div
-      className={`grid w-full grid-cols-1 gap-6 p-2 sm:grid-cols-2 ${lgCols[columns]}`}
-    >
-      {items.map((item, i) => (
-        // PopIn keeps every box the same height and pops it up on scroll
-        <PopIn key={getKey(item, i)} delay={(i % columns) * 0.1}>
-          {renderItem(item, i)}
-        </PopIn>
-      ))}
+    // pt-4 leaves room for the tape so the carousel doesn't clip it
+    <div className="h-full pt-4">
+      <div
+        className={`relative flex h-full flex-col mx-auto w-full max-w-60 rounded-2xl border-2 border-[#141b4d] bg-white p-3 pb-4 text-left shadow-[4px_4px_0_#141b4d] transition duration-300 hover:-translate-y-2 hover:rotate-0 ${
+          index % 2 === 0 ? "-rotate-2" : "rotate-2"
+        }`}
+      >
+        {/* green tape */}
+        <div className="absolute -top-3 left-1/2 h-5 w-20 -translate-x-1/2 -rotate-3 bg-[#bfe0a1]/80" />
+
+        {/* photo */}
+        <div className="relative flex aspect-5/4 w-full items-center justify-center overflow-hidden rounded-lg bg-[#d0d0ce] text-lg text-[#3f4444]">
+          {photo ? (
+            <Image
+              src={photo}
+              alt={member.name}
+              fill
+              sizes="(min-width: 1024px) 25vw, 90vw"
+              className="object-cover object-[60%]"
+            />
+          ) : (
+            "[PHOTO]"
+          )}
+        </div>
+
+        {/* caption strip */}
+        <div className="flex flex-1 flex-col pt-3 text-center">
+          <h3 className="text-xl font-semibold text-[#141b4d]">
+            {member.name}
+          </h3>
+          <p className="mt-1 text-base text-[#3f4444]">{member.role.trim()}</p>
+        </div>
+      </div>
     </div>
   );
 }
- 
